@@ -15,19 +15,6 @@
     transform: translateX(0);
   }
 }
-.blackBackgroundFadeOut {
-  animation: blackBackgroundFadeOut 1000ms forwards;
-}
-@keyframes blackBackgroundFadeOut {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(0);
-  }
-}
 
 .sectionMove {
   animation: sectionMove 500ms forwards;
@@ -96,6 +83,15 @@
     100% {
       transform: translateX(200%);
     }
+  }
+}
+
+.whiteBackgroundSlideIn {
+  animation: whiteBackgroundSlideIn 1000ms forwards;
+}
+@keyframes whiteBackgroundSlideIn {
+  100% {
+    transform: translateY(0);
   }
 }
 

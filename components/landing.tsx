@@ -56,7 +56,6 @@ const landing = () => {
           fullHeight
           ${style.blackBackground}
           ${animationCounter >= 1 && animation.blackBackgroundSlideIn}
-          ${animationCounter >= 3 && animation.blackBackgroundFadeOut}
         `}
       />
       <div className={`textCenter ${animationCounter >= 1 && animation.questionTextSlideOut}`}>
@@ -85,11 +84,20 @@ const landing = () => {
               </div>
               <div className={`absolute ${style.clotheButtonLine}`} />
             </div>
-            <h1 className={`title colorWhite maxWidth ${style.buttonText} ${animationCounter >= 2 && animation.sectionTextSlide}`}>단단한 단추를</h1>
+            <h1 className={`title colorWhite maxWidth ${style.buttonText} ${animationCounter >= 2 && animation.sectionTextSlide}`}>헤지지 않는 단추를</h1>
           </div>
         </div>
       </div>
 
+      <div
+        className={`
+          absolute
+          fullWidth
+          fullHeight
+          ${style.whiteBackground}
+          ${animationCounter >= 3 && animation.whiteBackgroundSlideIn}
+        `}
+      />
       <div className={`absolute opacityNone ${animationCounter >= 3 && animation.solutionFadeIn} ${animationCounter >= 4 && animation.solutionFadeOut}`}>
         <h1 className={`title`}>달아준다는 것.</h1>
       </div>

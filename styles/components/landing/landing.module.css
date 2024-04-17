@@ -9,6 +9,10 @@
   transform: translateX(-100%);
   background-color: black;
 }
+.whiteBackground {
+  transform: translateY(-100%);
+  background-color: white;
+}
 
 .section {
   min-width: 100vw;
