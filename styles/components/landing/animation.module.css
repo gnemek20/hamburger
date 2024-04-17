@@ -1,0 +1,153 @@
+.questionTextSlideOut {
+  animation: questionTextSlideOut 2000ms forwards;
+}
+@keyframes questionTextSlideOut {
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+.blackBackgroundSlideIn {
+  animation: blackBackgroundSlideIn 1000ms forwards;
+}
+@keyframes blackBackgroundSlideIn {
+  100% {
+    transform: translateX(0);
+  }
+}
+.blackBackgroundFadeOut {
+  animation: blackBackgroundFadeOut 1000ms forwards;
+}
+@keyframes blackBackgroundFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+.sectionMove {
+  animation: sectionMove 500ms forwards;
+}
+@keyframes sectionMove {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.sectionfadeOut {
+  animation: sectionfadeOut 1000ms forwards
+}
+@keyframes sectionfadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.sectionTextSlide {
+  animation: sectionTextSlide 2500ms forwards;
+  animation-delay: 250ms;
+}
+@keyframes sectionTextSlide {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.zipperMove {
+  animation: zipperMove 1500ms ease-in-out forwards;
+  animation-delay: 250ms;
+}
+@keyframes zipperMove {
+  50% {
+    transform: translateX(400%) translateY(-10%);
+  }
+  100% {
+    transform: translateX(250%) translateY(-10%);
+  }
+}
+
+.clotheButtonCapMove {
+  animation: clotheButtonCapMove 1500ms ease-in-out forwards;
+}
+.clotheButtonCapRoll {
+  animation: clotheButtonCapRoll 1500ms ease-in-out forwards;
+  animation-delay: 250ms;
+}
+@keyframes clotheButtonCapMove {
+  100% {
+    transform: translateX(300%);
+  }
+}
+@keyframes clotheButtonCapRoll {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+@media screen and (max-width: 767px) {
+  @keyframes clotheButtonCapMove {
+    100% {
+      transform: translateX(200%);
+    }
+  }
+}
+
+.solutionFadeIn {
+  animation: solutionFadeIn 2000ms forwards;
+  animation-delay: 250ms;
+}
+@keyframes solutionFadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+.solutionFadeOut {
+  animation: solutionFadeOut 500ms forwards;
+}
+@keyframes solutionFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.resultSubTitleSlideIn {
+  animation: resultSubTitleSlideIn 500ms forwards;
+  animation-delay: 250ms;
+}
+@keyframes resultSubTitleSlideIn {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resultLineExpand {
+  animation: resultLineExpand 500ms forwards;
+}
+@keyframes resultLineExpand {
+  100% {
+    opacity: 1;
+    width: 75%;
+  }
+}
+
+.resultTitleSlideIn {
+  animation: resultTitleSlideIn 500ms forwards;
+  animation-delay: 750ms;
+}
+@keyframes resultTitleSlideIn {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

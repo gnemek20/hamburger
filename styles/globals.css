@@ -2,3 +2,107 @@
   padding: 0;
   margin: 0;
 }
+
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+
+.opacityNone {
+  opacity: 0;
+}
+.opacityFull {
+  opacity: 1;
+}
+
+.flex {
+  display: flex;
+}
+.flexColumn {
+  flex-direction: column;
+}
+
+.textStart {
+  text-align: start;
+}
+.textCenter {
+  text-align: center;
+}
+.textEnd {
+  text-align: end;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+.alignCenter {
+  align-items: center;
+}
+.topCenter {
+  top: 50%;
+}
+.leftCenter {
+  left: 50%;
+}
+
+.maxWidth {
+  width: 100%;
+}
+.maxHeight {
+  height: 100%;
+}
+.fullWidth {
+  width: 100vw;
+}
+.fullHeight {
+  height: 100vh;
+}
+
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.relative {
+  position: relative;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.title {
+  font-size: var(--pc-large-size);
+  color: #333;
+}
+.text {
+  font-size: var(--pc-normal-size);
+  color: #333;
+}
+
+.colorWhite {
+  color: white;
+}
+.invert {
+  filter: invert(1);
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    font-size: var(--mobile-large-size);
+  }
+  .text {
+    font-size: var(--mobile-normal-size);
+  }
+}
+
+:root {
+  --pc-large-size: 32px;
+  --mobile-large-size: 24px;
+
+  --pc-normal-size: 18px;
+  --mobile-normal-size: 14px;
+}

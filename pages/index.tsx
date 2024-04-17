@@ -1,9 +1,11 @@
 import style from "@/styles/main.module.css"
+import { Landing } from '@/components/index';
 
 const main = () => {
   return (
-    <div>
-    </div>
+    <>
+      <Landing></Landing>
+    </>
   );
 }
 
