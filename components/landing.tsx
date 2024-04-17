@@ -30,7 +30,7 @@ const landing = () => {
     animationDelay += sectionDuration
     setTimeout(() => setAnimationCounter(3), animationDelay);
 
-    animationDelay += 3500;
+    animationDelay += 3000;
     setTimeout(() => setAnimationCounter(4), animationDelay);
 
     animationDelay += 500;
@@ -91,7 +91,7 @@ const landing = () => {
       </div>
 
       <div className={`absolute opacityNone ${animationCounter >= 3 && animation.solutionFadeIn} ${animationCounter >= 4 && animation.solutionFadeOut}`}>
-        <h1 className={`title`}>달아주는 것.</h1>
+        <h1 className={`title`}>달아준다는 것.</h1>
       </div>
 
       <div className={`absolute flex flexColumn alignCenter`}>
