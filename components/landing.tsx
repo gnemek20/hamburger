@@ -18,9 +18,9 @@ const landing = () => {
   const [animationCounter, setAnimationCounter] = useState<number>(0);
 
   useEffect(() => {
-    const startDuration = 1500;
+    const startDelay = 1500;
     const sectionDuration = 2500;
-    let animationDelay = startDuration;
+    let animationDelay = startDelay;
 
     setTimeout(() => setAnimationCounter(1), animationDelay);
     setTimeout(() => zipperRef.current?.classList.remove('opacityNone'), animationDelay + 100);
