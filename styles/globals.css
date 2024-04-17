@@ -99,6 +99,12 @@
   }
 }
 
+@supports (-webkit-touch-callout: none) {
+  .fullHeight {
+    height: -webkit-fill-available;
+  }
+}
+
 :root {
   --pc-large-size: 32px;
   --mobile-large-size: 24px;
