@@ -4,9 +4,8 @@ import { Section } from '.'
 
 const introduce = () => {
   return (
-    <Section className={`flex justifyCenter alignCenter`} padding={50}>
+    <Section className={`flex justifyCenter alignCenter`} padding={200} gray>
       <h1 className={`title`}>샘플 텍스트</h1>
-      <h1>공간</h1>
     </Section>
   )
 }
