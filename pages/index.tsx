@@ -1,10 +1,11 @@
 import style from "@/styles/main.module.css"
-import { Landing } from '@/components/index';
+import { Introduce, Landing } from '@/components/index';
 
 const main = () => {
   return (
     <>
       <Landing></Landing>
+      <Introduce></Introduce>
     </>
   );
 }

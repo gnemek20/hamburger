@@ -55,6 +55,7 @@
 }
 .fullWidth {
   width: 100vw;
+  max-width: 100%;
 }
 .fullHeight {
   height: 100vh;
