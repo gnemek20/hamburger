@@ -1,0 +1,52 @@
+.titleSlideIn {
+  animation: titleSlideIn 1500ms forwards;
+  animation-delay: 500ms;
+}
+@keyframes titleSlideIn {
+  0% {
+    transform: translateY(25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.textSlideIn {
+  animation: textSlideIn 1500ms forwards;
+  animation-delay: 750ms;
+}
+@keyframes textSlideIn {
+  0% {
+    transform: translateY(25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thumbnailSlideIn {
+  animation: thumbnailSlideIn 1500ms forwards;
+}
+@keyframes thumbnailSlideIn {
+  0% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .titleSlideIn {
+    animation-delay: 0ms;
+  }
+  .textSlideIn {
+    animation-delay: 500ms;
+  }
+  .thumbnailSlideIn {
+    animation-delay: 750ms;
+  }
+}
