@@ -34,11 +34,23 @@
   text-align: end;
 }
 
+.justifyStart {
+  justify-content: start;
+}
 .justifyCenter {
   justify-content: center;
 }
+.justifyEnd {
+  justify-content: end;
+}
+.alignStart {
+  align-items: start;
+}
 .alignCenter {
   align-items: center;
+}
+.alignEnd {
+  align-items: end;
 }
 .topCenter {
   top: 50%;
@@ -47,6 +59,9 @@
   left: 50%;
 }
 
+.limitWidth {
+  max-width: 1400px;
+}
 .maxWidth {
   width: 100%;
 }
@@ -92,6 +107,14 @@
 }
 
 @media screen and (max-width: 767px) {
+  .mobileFlexColumn {
+    flex-direction: column;
+  }
+
+  .mobileAlignStart {
+    align-items: start;
+  }
+
   .title {
     font-size: var(--mobile-large-size);
   }

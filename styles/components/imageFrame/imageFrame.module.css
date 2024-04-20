@@ -1,0 +1,12 @@
+.image {
+  object-fit: cover;
+  filter: grayscale(0.6);
+}
+
+.frame {
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px - 6px);
+  height: calc(100% - 20px - 6px);
+  border: 3px dashed white;
+}
