@@ -1,0 +1,13 @@
+.section {
+  padding: 200px 20px;
+}
+
+.gray {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    padding: 100px 20px;
+  }
+}
