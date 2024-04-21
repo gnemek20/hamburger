@@ -33,7 +33,7 @@ const main = () => {
   }
 
   useEffect(() => {
-    if (introduceRef || productRef) {
+    if (refs[refs.length - 1]) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
