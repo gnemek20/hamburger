@@ -1,11 +1,28 @@
 import style from "@/styles/main.module.css"
-import { Introduce, Landing, Product } from '@/components/index';
+import { Introduce, Landing, Merit, Product } from '@/components/index';
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
   const [intersectingElements, setintersectingElements] = useState<Array<RefObject<HTMLDivElement>>>([]);
   const introduceRef = useRef<HTMLDivElement>(null);
   const productRef = useRef<HTMLDivElement>(null);
+  const meritRef = useRef<HTMLDivElement>(null);
+
+  interface componentsProps {
+    elementRef: RefObject<HTMLDivElement>
+    startAnimation: boolean
+  }
+
+  const components: Array<(props: componentsProps) => JSX.Element> = [
+    Introduce,
+    Product,
+    Merit
+  ];
+  const refs: Array<RefObject<HTMLDivElement>> = [
+    introduceRef,
+    productRef,
+    meritRef
+  ];
 
   const elementObserved = (observer: IntersectionObserver, elementRef: RefObject<HTMLDivElement>) => {
     if (!intersectingElements.includes(elementRef)) appendIntointersectingElements(elementRef);
@@ -20,14 +37,16 @@ const main = () => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            if (entry.target === introduceRef.current) elementObserved(observer, introduceRef);
-            else if (entry.target === productRef.current) elementObserved(observer, productRef);
+            refs.forEach((ref) => {
+              if (entry.target === ref.current) elementObserved(observer, ref);
+            })
           }
         })
       }, { threshold: 0.3 })
 
-      if (introduceRef.current) observer.observe(introduceRef.current);
-      if (productRef.current) observer.observe(productRef.current);
+      refs.forEach((ref) => {
+        ref.current && observer.observe(ref.current);
+      })
 
       return() => {
         observer.disconnect();
@@ -38,8 +57,11 @@ const main = () => {
   return (
     <>
       <Landing />
-      <Introduce elementRef={introduceRef} startAnimation={intersectingElements.includes(introduceRef)} />
-      <Product elementRef={productRef} startAnimation={intersectingElements.includes(productRef)} />
+      {
+        components.map((Component, index) => (
+          <Component elementRef={refs[index]} startAnimation={intersectingElements.includes(refs[index])} />
+        ))
+      }
     </>
   );
 }
