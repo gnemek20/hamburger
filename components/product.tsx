@@ -37,9 +37,9 @@ const product = (props: productProps) => {
           <ImageFrame className={`${style.thumbnail}`} image={clotheButtonImage} />
           <div className={`${style.thumbnailCover}`} />
           <div className={`reverse textEnd mobileTextStart ${style.content}`}>
-            <h1 className={`title`}>Button</h1>
+            <h1 className={`title`}>Clothe Button</h1>
             <div>
-              <p className={`text`}>지퍼에 관한 설명</p>
+              <p className={`text`}>단추에 관한 설명</p>
               <p className={`text`}>여러줄 입력 가능</p>
               <p className={`text`}>엄청길면어떻게되는지테스트</p>
             </div>
