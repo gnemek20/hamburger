@@ -10,7 +10,6 @@
   padding: 25px;
   aspect-ratio: 1;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.05);
 }
 .panel:nth-child(1) {
   background-color: rgba(0, 0, 0, 0.4);
