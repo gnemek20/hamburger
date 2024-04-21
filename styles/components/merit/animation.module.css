@@ -1,0 +1,75 @@
+.default {
+  animation-duration: 1500ms;
+  animation-fill-mode: forwards;
+}
+
+.firstPanelSlideIn {
+  animation-name: firstPanelSlideIn;
+}
+@keyframes firstPanelSlideIn {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.secondPanelSlideIn {
+  animation-name: secondPanelSlideIn;
+  animation-delay: 250ms;
+}
+@keyframes secondPanelSlideIn {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thirdPanelSlideIn {
+  animation-name: thirdPanelSlideIn;
+  animation-delay: 500ms;
+}
+@keyframes thirdPanelSlideIn {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  @keyframes firstPanelSlideIn {
+    0% {
+      transform: translateX(-10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes secondPanelSlideIn {
+    0% {
+      transform: translateX(10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes thirdPanelSlideIn {
+    0% {
+      transform: translateX(-10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
