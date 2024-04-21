@@ -1,0 +1,26 @@
+.panelSlideIn {
+  animation: panelSlideIn 1500ms forwards;
+}
+@keyframes panelSlideIn {
+  0% {
+    transform: translateX(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reversePanelSlideIn {
+  animation: reversePanelSlideIn 1500ms forwards;
+  animation-delay: 250ms;
+}
+@keyframes reversePanelSlideIn {
+  0% {
+    transform: scaleX(-1) translateX(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(-1) translateX(0);
+  }
+}

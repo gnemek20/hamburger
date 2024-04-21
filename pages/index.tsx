@@ -16,12 +16,14 @@ const main = () => {
   }
 
   useEffect(() => {
-    if (introduceRef) {
-      const observer = new IntersectionObserver(([event]) => {
-        if (event.isIntersecting) {
-          if (event.target === introduceRef.current) elementObserved(observer, introduceRef);
-          else if (event.target === productRef.current) elementObserved(observer, productRef);
-        }
+    if (introduceRef || productRef) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (entry.target === introduceRef.current) elementObserved(observer, introduceRef);
+            else if (entry.target === productRef.current) elementObserved(observer, productRef);
+          }
+        })
       }, { threshold: 0.5 })
 
       if (introduceRef.current) observer.observe(introduceRef.current);

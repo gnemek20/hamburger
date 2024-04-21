@@ -21,7 +21,7 @@ const product = (props: productProps) => {
   return (
     <Section className={`flex justifyCenter`}>
       <div className={`limitWidth maxWidth flex flexColumn ${style.container}`} ref={props.elementRef}>
-        <div className={`${style.panel}`}>
+        <div className={`opacityNone ${style.panel} ${props.startAnimation && animation.panelSlideIn}`}>
           <ImageFrame className={`${style.thumbnail}`} image={zipperImage} />
           <div className={`${style.thumbnailCover}`} />
           <div className={`${style.content}`}>
@@ -33,7 +33,7 @@ const product = (props: productProps) => {
             </div>
           </div>
         </div>
-        <div className={`reverse ${style.panel}`}>
+        <div className={`reverse opacityNone ${style.panel} ${props.startAnimation && animation.reversePanelSlideIn}`}>
           <ImageFrame className={`${style.thumbnail}`} image={clotheButtonImage} />
           <div className={`${style.thumbnailCover}`} />
           <div className={`reverse textEnd mobileTextStart ${style.content}`}>
