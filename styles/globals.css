@@ -60,7 +60,7 @@
 }
 
 .limitWidth {
-  max-width: 1400px;
+  max-width: 1200px;
 }
 .maxWidth {
   width: 100%;
@@ -105,6 +105,9 @@
 .invert {
   filter: invert(1);
 }
+.reverse {
+  transform: scaleX(-1);
+}
 
 @media screen and (max-width: 767px) {
   .mobileFlexColumn {
@@ -113,6 +116,10 @@
 
   .mobileAlignStart {
     align-items: start;
+  }
+
+  .mobileTextStart {
+    text-align: start;
   }
 
   .title {
