@@ -98,8 +98,16 @@ body {
   font-size: var(--pc-large-size);
   color: #333;
 }
+.mobileTitle {
+  font-size: var(--mobile-large-size);
+  color: #333;
+}
 .text {
   font-size: var(--pc-normal-size);
+  color: #333;
+}
+.mobileText {
+  font-size: var(--mobile-normal-size);
   color: #333;
 }
 
