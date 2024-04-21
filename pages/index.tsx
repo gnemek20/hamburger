@@ -24,7 +24,7 @@ const main = () => {
             else if (entry.target === productRef.current) elementObserved(observer, productRef);
           }
         })
-      }, { threshold: 0.5 })
+      }, { threshold: 0.3 })
 
       if (introduceRef.current) observer.observe(introduceRef.current);
       if (productRef.current) observer.observe(productRef.current);
