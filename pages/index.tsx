@@ -59,7 +59,7 @@ const main = () => {
       <Landing />
       {
         components.map((Component, index) => (
-          <Component elementRef={refs[index]} startAnimation={intersectingElements.includes(refs[index])} />
+          <Component elementRef={refs[index]} startAnimation={intersectingElements.includes(refs[index])} key={index} />
         ))
       }
     </>
