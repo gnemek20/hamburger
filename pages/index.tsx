@@ -1,5 +1,5 @@
 import style from "@/styles/main.module.css"
-import { Introduce, Landing, Merit, Product } from '@/components/index';
+import { Introduce, Landing, Map, Merit, Product } from '@/components/index';
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
@@ -7,6 +7,7 @@ const main = () => {
   const introduceRef = useRef<HTMLDivElement>(null);
   const productRef = useRef<HTMLDivElement>(null);
   const meritRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
 
   interface componentsProps {
     elementRef: RefObject<HTMLDivElement>
@@ -16,12 +17,14 @@ const main = () => {
   const components: Array<(props: componentsProps) => JSX.Element> = [
     Introduce,
     Product,
-    Merit
+    Merit,
+    Map
   ];
   const refs: Array<RefObject<HTMLDivElement>> = [
     introduceRef,
     productRef,
-    meritRef
+    meritRef,
+    mapRef
   ];
 
   const elementObserved = (observer: IntersectionObserver, elementRef: RefObject<HTMLDivElement>) => {

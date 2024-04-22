@@ -121,6 +121,10 @@ body {
   transform: scaleX(-1);
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 767px) {
   .mobileFlexColumn {
     flex-direction: column;

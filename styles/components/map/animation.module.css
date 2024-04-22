@@ -1,0 +1,25 @@
+.mapCoverFadeOut {
+  animation: mapCoverFadeOut 250ms forwards;
+}
+@keyframes mapCoverFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.mapCoverFadeIn {
+  animation: mapCoverFadeIn 250ms forwards;
+}
+@keyframes mapCoverFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    display: flex;
+  }
+}
