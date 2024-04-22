@@ -81,7 +81,7 @@ const request = () => {
           </div>
           <div>
             <AdditionalText require>내용</AdditionalText>
-            <textarea className={`${style.formTextarea}`} rows={10} spellCheck={false} onChange={(event) => setTimeout(() => inputText('detail', event.target.value))} />
+            <textarea className={`${style.formTextarea}`} rows={10} spellCheck={false} inputMode="email" onChange={(event) => setTimeout(() => inputText('detail', event.target.value))} />
           </div>
           <div>
             <AdditionalText>첨부파일</AdditionalText>

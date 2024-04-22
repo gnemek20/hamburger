@@ -10,11 +10,11 @@ const footer = () => {
         </div>
         <div className={`flex mobileFlexColumn ${style.information}`}>
           <div>
-            <p className={`mobileText colorWhite`}>사업자번호: 123-45-67890</p>
+            <p className={`mobileText colorWhite`}>사업자번호: <a className={`colorWhite`}>123-45-67890</a></p>
             <p className={`mobileText colorWhite`}>통신판매업: 서울 치킨-1234</p>
           </div>
           <div>
-            <p className={`mobileText colorWhite`}>전화번호: 010-3744-3084</p>
+            <p className={`mobileText colorWhite`}>전화번호: <a className={`colorWhite`}>010-3744-3084</a></p>
             <p className={`mobileText colorWhite`}>이메일: example@example.com</p>
           </div>
         </div>
