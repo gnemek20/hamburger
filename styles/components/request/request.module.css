@@ -1,0 +1,72 @@
+.content {
+  gap: 20px;
+}
+
+.divideLine {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  max-width: 800px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.form {
+  max-width: 600px;
+  gap: 30px;
+}
+.form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formTextInput {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  font-size: 14px;
+}
+.formTextarea {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.formFileInput {
+  display: none;
+}
+.formLabel {
+  padding: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+}
+.uploadedFiles {
+  gap: 6px;
+}
+.uploadedFile {
+  cursor: pointer;
+  margin-right: auto;
+  padding: 3px;
+  gap: 3px;
+}
+.uploadedFile:hover > .fileDeleteIcon {
+  opacity: 0.5;
+}
+.fileDeleteIcon {
+  opacity: 0;
+  width: 14px;
+  height: auto;
+}
+
+.formSubmit {
+  margin: auto;
+  width: 100px;
+  padding: 10px;
+  border: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.disabledFormSubmit {
+  cursor: not-allowed;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+}

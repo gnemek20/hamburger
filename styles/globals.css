@@ -110,6 +110,10 @@ body {
   font-size: var(--mobile-normal-size);
   color: #333;
 }
+.additionalText {
+  font-size: 12px;
+  color: #333;
+}
 
 .colorWhite {
   color: white;
