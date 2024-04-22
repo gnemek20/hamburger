@@ -1,5 +1,5 @@
 import style from "@/styles/main.module.css"
-import { Introduce, Landing, Map, Merit, Product, Request } from '@/components/index';
+import { Footer, Introduce, Landing, Map, Merit, Product, Request } from '@/components/index';
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
@@ -68,6 +68,7 @@ const main = () => {
           <Component elementRef={refs[index]} startAnimation={intersectingElements.includes(refs[index])} key={index} />
         ))
       }
+      <Footer />
     </>
   );
 }
