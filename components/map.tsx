@@ -33,7 +33,7 @@ const map = () => {
           <h1 className={`title colorWhite`}>locked</h1>
         </div>
         <div className={`absolute flex mobileFlexColumn ${style.optionContainer}`}>
-          <div className={`${style.information}`}>
+          <div className={`flex alignCenter ${style.information}`}>
             <p className={`text`}>서울특별시 종로구 김상옥로 59, 한아빌딩 3층</p>
           </div>
           <div className={`pointer flex alignCenter ${style.switchBackground} ${isToggledSwitch && style.toggledSwitchBackground}`} onClick={() => setIsToggledSwitch(!isToggledSwitch)}>
