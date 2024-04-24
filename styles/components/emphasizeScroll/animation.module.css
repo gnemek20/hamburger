@@ -1,0 +1,11 @@
+.downArrowIconSliding {
+  animation: downArrowIconSliding 1500ms alternate ease-in-out infinite;
+}
+@keyframes downArrowIconSliding {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(50%);
+  }
+}

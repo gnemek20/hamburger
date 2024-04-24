@@ -2,6 +2,7 @@ import style from '@/styles/components/landing/landing.module.css'
 import animation from '@/styles/components/landing/animation.module.css'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import { EmphasizeScroll } from '.'
 
 const landing = () => {
   const zipperSliderIcon = {
@@ -107,6 +108,8 @@ const landing = () => {
         <div className={`opacityNone ${style.resultLine} ${animationCounter >= 5 && animation.resultLineExpand}`} />
         <h1 className={`title opacityNone ${style.resultTitle} ${animationCounter >= 5 && animation.resultTitleSlideIn}`}>대양ING</h1>
       </div>
+
+      <EmphasizeScroll className={`opacityNone ${animationCounter >= 5 && animation.emphasizeScrollFadeIn}`} />
     </div>
   )
 }
