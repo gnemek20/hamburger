@@ -101,22 +101,27 @@ a {
 
 .title {
   font-size: var(--pc-large-size);
+  font-family: var(--font);
   color: #333;
 }
 .mobileTitle {
   font-size: var(--mobile-large-size);
+  font-family: var(--font);
   color: #333;
 }
 .text {
   font-size: var(--pc-normal-size);
+  font-family: var(--font);
   color: #333;
 }
 .mobileText {
   font-size: var(--mobile-normal-size);
+  font-family: var(--font);
   color: #333;
 }
 .additionalText {
   font-size: 12px;
+  font-family: var(--font);
   color: #333;
 }
 
@@ -161,10 +166,19 @@ a {
   }
 }
 
+@font-face {
+  font-family: '폰트';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --pc-large-size: 32px;
   --mobile-large-size: 24px;
 
   --pc-normal-size: 18px;
   --mobile-normal-size: 14px;
+
+  --font: '폰트';
 }
