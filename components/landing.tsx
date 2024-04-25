@@ -13,6 +13,10 @@ const landing = () => {
     src: require('@/public/icons/clotheButton.svg'),
     alt: 'clotheButtonIcon'
   }
+  const logo = {
+    src: require('@/public/logo.svg'),
+    alt: 'logo'
+  }
 
   const zipperRef = useRef<HTMLDivElement>(null);
 
@@ -106,7 +110,8 @@ const landing = () => {
       <div className={`absolute flex flexColumn alignCenter`}>
         <h1 className={`title opacityNone ${style.resultSubTitle} ${animationCounter >= 5 && animation.resultSubTitleSlideIn}`}>옷에 새로운 날개를 달다</h1>
         <div className={`opacityNone ${style.resultLine} ${animationCounter >= 5 && animation.resultLineExpand}`} />
-        <h1 className={`title opacityNone ${style.resultTitle} ${animationCounter >= 5 && animation.resultTitleSlideIn}`}>대양ING</h1>
+        {/* <h1 className={`title opacityNone ${style.resultTitle} ${animationCounter >= 5 && animation.resultTitleSlideIn}`}>대양ING</h1> */}
+        <Image className={`title opacityNone ${style.resultTitle} ${animationCounter >= 5 && animation.resultTitleSlideIn}`} src={logo.src} alt={logo.alt} />
       </div>
 
       <EmphasizeScroll className={`opacityNone ${animationCounter >= 5 && animation.emphasizeScrollFadeIn}`} />
