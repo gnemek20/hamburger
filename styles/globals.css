@@ -103,26 +103,37 @@ a {
   font-size: var(--pc-large-size);
   font-family: var(--font);
   color: #333;
+  word-break: keep-all;
 }
 .mobileTitle {
   font-size: var(--mobile-large-size);
   font-family: var(--font);
   color: #333;
+  word-break: keep-all;
 }
 .text {
   font-size: var(--pc-normal-size);
   font-family: var(--font);
   color: #333;
+  word-break: keep-all;
+}
+.pcText {
+  font-size: var(--pc-normal-size);
+  font-family: var(--font);
+  color: #333;
+  word-break: keep-all;
 }
 .mobileText {
   font-size: var(--mobile-normal-size);
   font-family: var(--font);
   color: #333;
+  word-break: keep-all;
 }
 .additionalText {
   font-size: 12px;
   font-family: var(--font);
   color: #333;
+  word-break: keep-all;
 }
 
 .colorWhite {

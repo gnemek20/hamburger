@@ -1,7 +1,7 @@
 import style from '@/styles/components/request/request.module.css'
 import animation from '@/styles/components/request/animation.module.css'
-import { AdditionalText, Section } from '.'
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { AdditionalText, Dialog, Section } from '.'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { File } from 'buffer'
 import Image from 'next/image'
 
@@ -15,21 +15,22 @@ const request = () => {
     name: string
     contact: string
     detail: string
-    files: Array<File>
+    files: Array<string>
   }
 
   const [name, setName] = useState<string>('');
   const [contact, setContact] = useState<string>('');
   const [detail, setDetail] = useState<string>('');
   const [files, setFiles] = useState<Array<File>>([]);
-  const [formData, setFormData] = useState<formType>({
-    name: '',
-    contact: '',
-    detail: '',
-    files: []
-  });
 
   const [disabledSubmit, setDisabledSubmit] = useState<boolean>(true);
+
+  const [showDialog, setShowDialog] = useState<boolean>(false);
+  const [dialogLoading, setDialogLoading] = useState<boolean>(false);
+  
+  const [alreadyPosted, setAlreadyPosted] = useState<boolean>(false);
+  const [completedPost, setCompletedPost] = useState<boolean>(false);
+  const [postedRequest, setPostedRequest] = useState<boolean>(false);
 
   let timeoutId: NodeJS.Timeout;
   const inputText = (target: 'name' | 'contact' | 'detail', value: string) => {
@@ -55,10 +56,118 @@ const request = () => {
     setFiles(files.filter((file, index) => index !== fileIndex));
   }
 
+  const activeDialog = () => {
+    if (disabledSubmit || showDialog) return;
+
+    setShowDialog(true);
+  }
+
+  const postRequest = async () => {
+    if (dialogLoading) return;
+
+    setDialogLoading(true);
+
+    let base64Files: Array<string> = [];
+
+    const fileToBase64Promise = files.map((file) => {
+      return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+
+        reader.readAsDataURL(file as Blob);
+        reader.onload = () => {
+          const base64 = reader.result;
+
+          if (base64) {
+            base64Files.push(base64.toString());
+            resolve(true);
+          }
+        }
+      })
+    })
+
+    await Promise.all(fileToBase64Promise);
+
+    let posted: boolean;
+
+    try {
+      const formData: formType = {
+        name: name,
+        contact: contact,
+        detail: detail,
+        files: base64Files
+      }
+
+      await fetch('https://backburger.vercel.app/test', {
+        method: 'get'
+      })
+
+      posted = true;
+    }
+    catch (Exception) {
+      posted = false;
+    }
+
+    setDialogLoading(false);
+    setCompletedPost(true);
+
+    setPostedRequest(posted);
+    setAlreadyPosted(posted);
+  }
+
+  const closeDialog = () => {
+    setCompletedPost(false);
+    setShowDialog(false);
+  }
+
   useEffect(() => {
     if (name.length > 0 && contact.length > 0 && detail.length > 0) setDisabledSubmit(false);
     else setDisabledSubmit(true);
   }, [name, contact, detail])
+
+  // const testSend = async () => {
+  //   if (disabledSubmit) return;
+
+  //   let base64Files: Array<string> = [];
+  //   const promise = files.map((file) => {
+  //     return new Promise((resolve, reject) => {
+  //       let reader = new FileReader();
+  //       reader.readAsDataURL(file as Blob);
+  //       reader.onload = () => {
+  //         const base64 = reader.result;
+  
+  //         if (base64) {
+  //           // console.log('base64:', base64);
+  //           base64Files.push(base64.toString());
+  //           resolve(true);
+  //         }
+  //       }
+  //     })
+  //   })
+
+  //   await Promise.all(promise);
+
+  //   const formData: formType = {
+  //     name: name,
+  //     contact: contact,
+  //     detail: detail,
+  //     files: base64Files
+  //   }
+
+  //   try {
+  //     await fetch('http://localhost:3000/test', {
+  //       method: 'POST',
+  //       body: JSON.stringify(formData),
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //     })
+
+  //     window.alert('업로드 되었습니다.');
+  //   }
+  //   catch (Exception) {
+  //     window.alert('실패했습니다.');
+  //   }
+  // }
 
   return (
     <Section className={`flex justifyCenter`} gray>
@@ -103,7 +212,49 @@ const request = () => {
             }
           </div>
           <div>
-            <button className={`pointer ${style.formSubmit} ${disabledSubmit && style.disabledFormSubmit}`}>제출</button>
+            <button className={`pointer ${style.formSubmit} ${disabledSubmit && style.disabledFormSubmit}`} onClick={activeDialog}>제출</button>
+            <Dialog
+              className={`flex flexColumn alignCenter textCenter maxWidth ${completedPost ? style.postCompleteDialog : style.finalCheckDialog}`}
+              active={showDialog}
+              loading={dialogLoading}
+            >
+              {
+                completedPost ? (
+                  <>
+                    {
+                      postedRequest ? (
+                        <>
+                          <p className={`title`}>등록되었습니다.</p>
+                          <p className={`text`}>영업일 기준 이틀 내로<br />기재해주신 연락처로 연락드리겠습니다.</p>
+                        </>
+                      ) : (
+                        <>
+                          <p className={`title`}>등록에 실패했습니다.</p>
+                          <p className={`text`}>잠시 후 다시 시도해주세요.</p>
+                        </>
+                      )
+                    }
+                    <div className={`flex justifyCenter maxWidth ${style.dialogButtonContainer} ${style.dialogCloseButtonContainer}`}>
+                      <button className={`mobileText pointer`} onClick={closeDialog}>닫기</button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      { alreadyPosted ?
+                        <p className={`pcText`}>등록된 주문이 있습니다.<br />한 번 더 제출하시겠습니까?</p>
+                        :
+                        <p className={`pcText`}>제출하시겠습니까?</p>
+                      }
+                    </div>
+                    <div className={`flex justifyCenter maxWidth ${style.dialogButtonContainer} ${style.dialogChoiceButtonContainer}`}>
+                      <button className={`mobileText colorWhite pointer`} onClick={postRequest}>네</button>
+                      <button className={`mobileText pointer`} onClick={() => setShowDialog(false)}>아니오</button>
+                    </div>
+                  </>
+                )
+              }
+            </Dialog>
           </div>
         </div>
       </div>

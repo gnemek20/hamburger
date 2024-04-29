@@ -1,0 +1,35 @@
+.dialogFadeIn {
+  animation: dialogFadeIn 200ms forwards;
+}
+@keyframes dialogFadeIn {
+  0% {
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: flex;
+  }
+}
+
+.dialogOut {
+  animation: dialogOut 0ms forwards;
+}
+@keyframes dialogOut {
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.rotating {
+  transform-origin: bottom right;
+  animation: rotating 2000ms ease-in-out infinite;
+}
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

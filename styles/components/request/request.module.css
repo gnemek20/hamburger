@@ -70,3 +70,43 @@
   color: rgba(255, 255, 255, 0.5);
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+.finalCheckDialog {
+  gap: 25px;
+  max-width: 250px;
+}
+.postCompleteDialog {
+  gap: 25px;
+  max-width: 500px;
+}
+
+.dialogButtonContainer button {
+  max-width: 40%;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #333;
+  border-radius: 3px;
+}
+
+.dialogChoiceButtonContainer {
+  gap: 15px;
+}
+.dialogChoiceButtonContainer button:nth-child(1) {
+  background-color: #333;
+}
+.dialogChoiceButtonContainer button:nth-child(2) {
+  background-color: transparent;
+}
+
+.dialogCloseButtonContainer button {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 767px) {
+  .finalCheckDialog {
+    gap: 15px;
+  }
+  .postCompleteDialog {
+    gap: 15px;
+  }
+}
