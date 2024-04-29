@@ -99,11 +99,10 @@ const request = () => {
 
       await fetch('https://backburger.vercel.app/postRequest', {
         method: 'post',
-        body: JSON.stringify(formData)
-      }).then((res) => {
-        console.log(res);
+        body: JSON.stringify(formData),
+        mode: 'no-cors'
       })
-
+      
       posted = true;
     }
     catch (Exception) {
