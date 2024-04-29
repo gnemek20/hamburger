@@ -11,11 +11,16 @@ const request = () => {
     alt: 'fileDeleteIcon'
   }
 
+  type fileType = {
+    name: string
+    path: string
+  }
+
   type formType = {
     name: string
     contact: string
     detail: string
-    files: Array<string>
+    files: Array<fileType>
   }
 
   const [name, setName] = useState<string>('');
@@ -67,7 +72,7 @@ const request = () => {
 
     setDialogLoading(true);
 
-    let base64Files: Array<string> = [];
+    let base64Files: Array<fileType> = [];
 
     const fileToBase64Promise = files.map((file) => {
       return new Promise((resolve, reject) => {
@@ -78,7 +83,11 @@ const request = () => {
           const base64 = reader.result;
 
           if (base64) {
-            base64Files.push(base64.toString());
+            base64Files.push({
+              name: file.name,
+              path: base64.toString()
+            });
+
             resolve(true);
           }
         }
@@ -94,7 +103,7 @@ const request = () => {
         name: name,
         contact: contact,
         detail: detail,
-        files: base64Files
+        files: base64Files,
       }
 
       await fetch('https://backburger.vercel.app/postRequest', {
@@ -102,6 +111,12 @@ const request = () => {
         body: JSON.stringify(formData),
         mode: 'no-cors'
       })
+
+      // await fetch('http://localhost:3000/postRequest', {
+      //   method: 'post',
+      //   body: JSON.stringify(formData),
+      //   mode: 'no-cors'
+      // })
       
       posted = true;
     }
