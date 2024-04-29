@@ -40,7 +40,7 @@ const request = () => {
       if (target === 'name') setName(value);
       else if (target === 'contact') setContact(value);
       else if (target === 'detail') setDetail(value);
-    }, 250)
+    }, 100)
   }
 
   const uploadFiles = (event: ChangeEvent<HTMLInputElement>) => {
@@ -97,8 +97,11 @@ const request = () => {
         files: base64Files
       }
 
-      await fetch('https://backburger.vercel.app/test', {
-        method: 'get'
+      await fetch('https://backburger.vercel.app/postRequest', {
+        method: 'post',
+        body: JSON.stringify(formData)
+      }).then((res) => {
+        console.log(res);
       })
 
       posted = true;
@@ -123,51 +126,6 @@ const request = () => {
     if (name.length > 0 && contact.length > 0 && detail.length > 0) setDisabledSubmit(false);
     else setDisabledSubmit(true);
   }, [name, contact, detail])
-
-  // const testSend = async () => {
-  //   if (disabledSubmit) return;
-
-  //   let base64Files: Array<string> = [];
-  //   const promise = files.map((file) => {
-  //     return new Promise((resolve, reject) => {
-  //       let reader = new FileReader();
-  //       reader.readAsDataURL(file as Blob);
-  //       reader.onload = () => {
-  //         const base64 = reader.result;
-  
-  //         if (base64) {
-  //           // console.log('base64:', base64);
-  //           base64Files.push(base64.toString());
-  //           resolve(true);
-  //         }
-  //       }
-  //     })
-  //   })
-
-  //   await Promise.all(promise);
-
-  //   const formData: formType = {
-  //     name: name,
-  //     contact: contact,
-  //     detail: detail,
-  //     files: base64Files
-  //   }
-
-  //   try {
-  //     await fetch('http://localhost:3000/test', {
-  //       method: 'POST',
-  //       body: JSON.stringify(formData),
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //     })
-
-  //     window.alert('업로드 되었습니다.');
-  //   }
-  //   catch (Exception) {
-  //     window.alert('실패했습니다.');
-  //   }
-  // }
 
   return (
     <Section className={`flex justifyCenter`} gray>
