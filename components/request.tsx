@@ -109,14 +109,9 @@ const request = () => {
       await fetch('https://backburger.vercel.app/postRequest', {
         method: 'post',
         body: JSON.stringify(formData),
-        mode: 'no-cors'
+        mode: 'cors',
+        headers: {'Content-Type': 'application/json'}
       })
-
-      // await fetch('http://localhost:3000/postRequest', {
-      //   method: 'post',
-      //   body: JSON.stringify(formData),
-      //   mode: 'no-cors'
-      // })
       
       posted = true;
     }
