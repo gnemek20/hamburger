@@ -15,6 +15,9 @@
   animation: dialogOut 0ms forwards;
 }
 @keyframes dialogOut {
+  0% {
+    display: flex;
+  }
   100% {
     opacity: 0;
     display: none;

@@ -193,7 +193,7 @@ const request = () => {
           </div>
           <div>
             <button className={`pointer ${style.formSubmit} ${disabledSubmit && style.disabledFormSubmit}`} onClick={activeDialog}>제출</button>
-            {/* <Dialog
+            <Dialog
               className={`flex flexColumn alignCenter textCenter maxWidth ${completedPost ? style.postCompleteDialog : style.finalCheckDialog}`}
               active={showDialog}
               loading={dialogLoading}
@@ -234,7 +234,7 @@ const request = () => {
                   </>
                 )
               }
-            </Dialog> */}
+            </Dialog>
           </div>
         </div>
       </div>
