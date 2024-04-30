@@ -11,6 +11,7 @@ interface dialogProps {
 
 const dialog = (props: dialogProps) => {
   return (
+    props.active &&
     <div className={`opacityNone fixed fullWidth fullHeight flex justifyCenter alignCenter ${style.mask} ${props.active ? animation.dialogFadeIn : animation.dialogOut}`}>
       <div className={`${props.className} ${style.container}`}>
         {
