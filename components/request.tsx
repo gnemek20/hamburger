@@ -37,6 +37,8 @@ const request = () => {
   const [completedPost, setCompletedPost] = useState<boolean>(false);
   const [postedRequest, setPostedRequest] = useState<boolean>(false);
 
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
   let timeoutId: NodeJS.Timeout;
   const inputText = (target: 'name' | 'contact' | 'detail', value: string) => {
     clearTimeout(timeoutId);
@@ -149,6 +151,12 @@ const request = () => {
     else setDisabledSubmit(true);
   }, [name, contact, detail])
 
+  useEffect(() => {
+    const user = navigator.userAgent.toLowerCase();;
+
+    if (user.includes('iphone') || user.includes('android') || user.includes('ipad')) setIsMobile(true);
+  }, [])
+
   return (
     <Section className={`flex justifyCenter`} gray>
       <div className={`flex flexColumn alignCenter limitWidth maxWidth`}>
@@ -166,11 +174,11 @@ const request = () => {
           </div>
           <div>
             <AdditionalText require>연락처</AdditionalText>
-            <input className={`${style.formTextInput}`} type="text" spellCheck={false} onChange={(event) => setTimeout(() => inputText('contact', event.target.value))} />
+            <input className={`${style.formTextInput}`} type="text" spellCheck={false} inputMode={`${isMobile ? 'email' : 'text'}`} onChange={(event) => setTimeout(() => inputText('contact', event.target.value))} />
           </div>
           <div>
             <AdditionalText require>내용</AdditionalText>
-            <textarea className={`${style.formTextarea}`} rows={10} spellCheck={false} inputMode="email" onChange={(event) => setTimeout(() => inputText('detail', event.target.value))} />
+            <textarea className={`${style.formTextarea}`} rows={10} spellCheck={false} onChange={(event) => setTimeout(() => inputText('detail', event.target.value))} />
           </div>
           <div>
             <AdditionalText>첨부파일</AdditionalText>
