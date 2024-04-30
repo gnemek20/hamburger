@@ -116,7 +116,6 @@ const request = () => {
       if (res.ok) {
         try {
           await res.json().then(data => {
-            console.log(data);
             if (data.status === 200) posted = true;
             else posted = false;
           })
