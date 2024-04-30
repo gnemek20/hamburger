@@ -96,7 +96,7 @@ const request = () => {
 
     await Promise.all(fileToBase64Promise);
 
-    let posted: boolean;
+    let posted: boolean = false;
 
     try {
       const formData: formType = {
@@ -106,14 +106,27 @@ const request = () => {
         files: base64Files,
       }
 
-      await fetch('https://backburger.vercel.app/postRequest', {
+      const res = await fetch('https://backburger.vercel.app/postRequest', {
         method: 'post',
         body: JSON.stringify(formData),
         mode: 'cors',
         headers: {'Content-Type': 'application/json'}
       })
-      
-      posted = true;
+
+      if (res.ok) {
+        try {
+          res.json().then(data => {
+            if (data.status === 200) posted = true;
+            else posted = false;
+          })
+        }
+        catch (Exception) {
+          posted = false;
+        }
+      }
+      else {
+        posted = false;
+      }
     }
     catch (Exception) {
       posted = false;
