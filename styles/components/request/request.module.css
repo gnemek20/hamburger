@@ -12,8 +12,9 @@
 .method {
   cursor: pointer;
   flex: 1;
-  padding: 10px 20%;
+  padding: 10px 10%;
   color: rgba(0, 0, 0, 0.3);
+  transition: all 100ms;
 }
 .method:hover {
   color: #333;
