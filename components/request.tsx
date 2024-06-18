@@ -54,6 +54,15 @@ const request = (props: requestProps) => {
 
   const [selectedMethod, setSelectedMethod] = useState<'realTime' | 'email'>('realTime');
 
+  const changeMethod = (method: typeof selectedMethod) => {
+    setName('');
+    setContact('');
+    setDetail('');
+    setFiles([]);
+
+    setSelectedMethod(method);
+  }
+
   let timeoutId: NodeJS.Timeout;
   const inputText = (target: 'name' | 'contact' | 'detail', value: string) => {
     clearTimeout(timeoutId);
@@ -184,10 +193,10 @@ const request = (props: requestProps) => {
         <div className={`flex flexColumn maxWidth alignCenter ${style.methodContainer}`}>
           <div className={`flex spaceBetween maxWidth textCenter ${style.methods}`}>
             <div className={`flex flexColumn alignCenter maxWidth`}>
-              <h1 className={`text ${style.method} ${selectedMethod === 'realTime' && style.selectedMethod}`} onClick={() => setSelectedMethod('realTime')}>실시간 문의</h1>
+              <h1 className={`text ${style.method} ${selectedMethod === 'realTime' && style.selectedMethod}`} onClick={() => changeMethod('realTime')}>실시간 문의</h1>
             </div>
             <div className={`flex flexColumn alignCenter maxWidth`}>
-              <h1 className={`text ${style.method} ${selectedMethod === 'email' && style.selectedMethod}`} onClick={() => setSelectedMethod('email')}>이메일 문의</h1>
+              <h1 className={`text ${style.method} ${selectedMethod === 'email' && style.selectedMethod}`} onClick={() => changeMethod('email')}>이메일 문의</h1>
             </div>
           </div>
           <div className={`maxWidth ${style.divideLine}`} />
