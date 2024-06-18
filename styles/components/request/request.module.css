@@ -2,11 +2,57 @@
   gap: 20px;
 }
 
-.divideLine {
+.methodContainer {
   margin-top: 50px;
   margin-bottom: 30px;
+}
+.methods {
+  max-width: 800px;
+}
+.method {
+  cursor: pointer;
+  flex: 1;
+  padding: 10px 20%;
+  color: rgba(0, 0, 0, 0.3);
+}
+.method:hover {
+  color: #333;
+}
+.selectedMethod {
+  color: #333;
+}
+
+.divideLine {
   max-width: 800px;
   border: 1px solid rgba(0, 0, 0, 0.5);
+  border-left: none;
+  border-right: none;
+}
+
+.contact {
+  max-width: 600px;
+  gap: 30px;
+}
+.contactMethod {
+  gap: 20px;
+}
+
+.contactImageContainer {
+  cursor: pointer;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+.contactImage {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 105%;
+  height: 105%;
 }
 
 .form {
@@ -103,6 +149,11 @@
 }
 
 @media screen and (max-width: 767px) {
+  .contactImageContainer {
+    width: 40px;
+    height: 40px;
+  }
+
   .finalCheckDialog {
     gap: 15px;
   }
