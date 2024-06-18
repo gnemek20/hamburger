@@ -43,6 +43,10 @@ a {
   text-align: end;
 }
 
+.spaceBetween {
+  justify-content: space-between;
+}
+
 .justifyStart {
   justify-content: start;
 }

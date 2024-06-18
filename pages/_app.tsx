@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>대양ING</title>
+        <meta property="og:description" content="옷에 새로운 날개를 달다" />
       </Head>
       <Script
         type="text/javascript"

@@ -1,11 +1,15 @@
 import style from '@/styles/components/request/request.module.css'
 import animation from '@/styles/components/request/animation.module.css'
 import { AdditionalText, Dialog, Section } from '.'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, RefObject, useEffect, useState } from 'react'
 import { File } from 'buffer'
 import Image from 'next/image'
 
-const request = () => {
+interface requestProps {
+  elementRef: RefObject<HTMLDivElement>
+}
+
+const request = (props: requestProps) => {
   const fileDeleteIcon = {
     src: require('@/public/icons/delete.svg'),
     alt: 'fileDeleteIcon'
@@ -159,9 +163,9 @@ const request = () => {
 
   return (
     <Section className={`flex justifyCenter`} gray>
-      <div className={`flex flexColumn alignCenter limitWidth maxWidth`}>
+      <div className={`flex flexColumn alignCenter limitWidth maxWidth`} ref={props.elementRef}>
         <div className={`flex flexColumn textCenter ${style.content}`}>
-          <h1 className={`title`}>주문 등록</h1>
+          <h1 className={`title`}>발주 문의</h1>
           <div>
             <p className={`text`}>최대한 빨리 확인하여 기재해주신 연락처로 연락드리겠습니다.</p>
           </div>

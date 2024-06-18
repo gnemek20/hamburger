@@ -1,4 +1,5 @@
 export { default as Landing } from './landing'
+export { default as Header } from './header'
 export { default as Introduce } from './introduce'
 export { default as Product } from './product'
 export { default as Merit } from './merit'

@@ -1,5 +1,5 @@
 import style from "@/styles/main.module.css"
-import { Footer, Introduce, Landing, Map, Merit, Product, Request } from '@/components/index';
+import { Footer, Header, Introduce, Landing, Map, Merit, Product, Request } from '@/components/index';
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
@@ -63,6 +63,7 @@ const main = () => {
   return (
     <>
       <Landing />
+      <Header requestComponentRef={refs[refs.length - 1]} />
       {
         components.map((Component, index) => (
           <Component elementRef={refs[index]} startAnimation={intersectingElements.includes(refs[index])} key={index} />
