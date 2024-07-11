@@ -2,7 +2,7 @@ import style from '@/styles/components/detail/detail.module.css'
 import animation from '@/styles/components/detail/animation.module.css'
 import Flicking, { FlickingError } from '@egjs/react-flicking'
 import Image from 'next/image'
-import { RefObject, useEffect, useRef, useState } from 'react'
+import { MouseEvent, RefObject, useEffect, useRef, useState } from 'react'
 
 interface detailProps {
   elementRef: RefObject<HTMLDivElement>
@@ -69,6 +69,18 @@ const detail = (props: detailProps) => {
     setIsMovingPanel(false);
   }
 
+  const touchToMovePanel = (event: MouseEvent) => {
+    const targetHalfWidth = event.currentTarget.getBoundingClientRect().width / 2;
+    const clickedPosition = event.clientX;
+    
+    if (clickedPosition < targetHalfWidth) {
+      movePanel('left');
+    }
+    else if (clickedPosition > targetHalfWidth) {
+      movePanel('right');
+    }
+  }
+
   const movePanel = (direction: 'left' | 'right') => {
     if (flickingRef.current?.animating) return;
     
@@ -123,7 +135,7 @@ const detail = (props: detailProps) => {
         {
           panelList.map((panel, index) => (
             <div className={`flex justifyCenter ${style.flickingPanel}`} key={index}>
-              <Image className={`${style.flickingImage} ${isMovingPanel ? animation.flickingImageLightly : animation.flickingImageDarkly}`} src={panel.image.src} alt={panel.image.alt} />
+              <Image className={`${style.flickingImage} ${isMovingPanel ? animation.flickingImageLightly : animation.flickingImageDarkly}`} src={panel.image.src} alt={panel.image.alt} onClick={(event) => touchToMovePanel(event)} />
             </div>
           ))
         }
