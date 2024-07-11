@@ -3,7 +3,8 @@
   position: sticky;
   top: 0px;
   padding: 20px 20px;
-  background-color: dimgray;
+  /* background-color: dimgray; */
+  background-color: rgb(89, 77, 73);
   opacity: 0.3;
   transition: all 100ms;
 }

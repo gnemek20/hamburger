@@ -1,9 +1,13 @@
 import style from '@/styles/components/detail/detail.module.css'
 import animation from '@/styles/components/detail/animation.module.css'
-import { Section } from '.'
 import Flicking, { FlickingError } from '@egjs/react-flicking'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
+
+interface detailProps {
+  elementRef: RefObject<HTMLDivElement>
+  startAnimation: boolean
+}
 
 const arrowIcon = {
   src: require('@/public/icons/downArrow.svg'),
@@ -23,20 +27,12 @@ const zipperImage = {
   alt: 'clotheButtonImage'
 }
 
-const content = (title: string, text: string) => {
-  return (
-    <>
-      <h1 className={`title`}>{ title }</h1>
-      <p className={`text whiteSpaceWrap`}>{ text }</p>
-    </>
-  )
-}
-
-const detail = () => {
+const detail = (props: detailProps) => {
   const flickingRef = useRef<Flicking>(null);
 
   const [panelIndex, setPanelIndex] = useState<number>(0);
-  const [flickingPanelCount, setFlickingPanelCount] = useState<number>(0);
+  const [flickingPanelLength, setFlickingPanelLength] = useState<number>(0);
+  const [isMovingPanel, setIsMovingPanel] = useState<boolean>(true);
 
   interface panelProps {
     image: typeof arrowIcon,
@@ -48,22 +44,29 @@ const detail = () => {
     {
       image: clotheButtonImage,
       title: '종류1',
-      text: ['의도적인', '여러줄 입력을', '확인하기 위함입니다 ^o^'].join('\n')
+      text: ['여러줄로도 입력이 가능합니다.', '모바일 환경일 때 글자 수에 주의해주세요.'].join('\n')
     },
     {
       image: shoeImage,
       title: '종류2',
-      text: '테스트2'
+      text: '텍스트2'
     },
     {
       image: zipperImage,
       title: '종류3',
-      text: '테스트3'
+      text: '텍스트3'
     }
   ];
 
   const recordFlickingStatus = () => {
     setPanelIndex(flickingRef.current?.index || 0);
+  }
+
+  const startMoveAnimation = () => {
+    setIsMovingPanel(true);
+  }
+  const finishMoveAnimation = () => {
+    setIsMovingPanel(false);
   }
 
   const movePanel = (direction: 'left' | 'right') => {
@@ -98,39 +101,48 @@ const detail = () => {
   }
 
   useEffect(() => {
-    setFlickingPanelCount(flickingRef.current?.panelCount ? flickingRef.current?.panelCount - 1 : 0);
+    setIsMovingPanel(!props.startAnimation);
+  }, [props.startAnimation])
+
+  useEffect(() => {
+    setFlickingPanelLength(flickingRef.current?.panelCount ? flickingRef.current?.panelCount - 1 : 0);
   }, [])
 
+  const introduction = (title: string, text: string) => {
+    return (
+      <>
+        <h1 className={`title colorWhite ${isMovingPanel ? animation.introductionSlideOut : animation.introductionTitleSlideIn}`}>{ title }</h1>
+        <p className={`text whiteSpaceWrap colorWhite ${isMovingPanel ? animation.introductionSlideOut : animation.introductionTextSlideIn}`}>{ text }</p>
+      </>
+    )
+  }
+
   return (
-    <Section className={`flex justifyCenter`} gray>
-      <div className={`limitWidth flex flexColumn maxWidth ${style.detail}`}>
-        <div className={`flex justifyCenter ${style.naverFlicking}`}>
-          <Flicking onChanged={() => recordFlickingStatus()} ref={flickingRef}>
-            {
-              panelList.map((panel, index) => (
-                <div className={`flex justifyCenter ${style.flickingPanel}`} key={index}>
-                  <Image src={panel.image.src} alt={panel.image.alt} />
-                </div>
-              ))
-            }
-          </Flicking>
-          <Image className={`${style.arrowIcon} ${style.leftArrowIcon} ${panelIndex === 0 && style.disabledIcon}`} src={arrowIcon.src} alt={arrowIcon.alt} onClick={() => panelIndex !== 0 && movePanel('left')} />
-          <Image className={`${style.arrowIcon} ${style.rightArrowIcon} ${panelIndex === flickingPanelCount && style.disabledIcon}`} src={arrowIcon.src} alt={arrowIcon.alt} onClick={() => panelIndex !== flickingPanelCount && movePanel('right')} />
-          <div className={`${style.simplePanelBackground}`}>
-            {
-              panelList.map((panel, index) => (
-                <div className={`${style.simplePanelContainer}`} onClick={() => changePanelIndex(index)} key={index}>
-                  <div className={`${style.simplePanel} ${index === panelIndex && style.activedSimplePanel}`} />
-                </div>
-              ))
-            }
-          </div>
-        </div>
-        <div className={`textCenter ${style.content}`}>
-          { content(panelList[panelIndex].title, panelList[panelIndex].text) }
-        </div>
+    <div className={`flex justifyCenter maxWidth ${style.detail}`} ref={props.elementRef}>
+      <Flicking onMoveStart={() => startMoveAnimation()} onMoveEnd={() => finishMoveAnimation()} onChanged={() => recordFlickingStatus()} ref={flickingRef}>
+        {
+          panelList.map((panel, index) => (
+            <div className={`flex justifyCenter ${style.flickingPanel}`} key={index}>
+              <Image className={`${style.flickingImage} ${isMovingPanel ? animation.flickingImageLightly : animation.flickingImageDarkly}`} src={panel.image.src} alt={panel.image.alt} />
+            </div>
+          ))
+        }
+      </Flicking>
+      <Image className={`${style.arrowIcon} ${style.leftArrow} ${panelIndex === 0 && style.disabledArrowIcon}`} src={arrowIcon.src} alt={arrowIcon.alt} onClick={() => movePanel('left')} />
+      <Image className={`${style.arrowIcon} ${style.rightArrow} ${panelIndex === flickingPanelLength && style.disabledArrowIcon}`} src={arrowIcon.src} alt={arrowIcon.alt} onClick={() => movePanel('right')} />
+      <div className={`${style.simplePanelBackground}`}>
+        {
+          panelList.map((panel, index) => (
+            <div className={`${style.simplePanelContainer}`} onClick={() => changePanelIndex(index)} key={index}>
+              <div className={`${style.simplePanel} ${index === panelIndex && style.activedSimplePanel}`} />
+            </div>
+          ))
+        }
       </div>
-    </Section>
+      <div className={`flex flexColumn textCenter ${style.introduction}`}>
+        { introduction(panelList[panelIndex].title, panelList[panelIndex].text) }
+      </div>
+    </div>
   )
 }
 

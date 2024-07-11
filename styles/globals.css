@@ -14,7 +14,7 @@ a {
 
 .flicking-viewport {
   overflow: hidden;
-  width: 75%;
+  display: flex;
 }
 .flicking-camera {
   display: flex;

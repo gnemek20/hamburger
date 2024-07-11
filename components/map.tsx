@@ -26,7 +26,7 @@ const map = () => {
   }, [])
 
   return (
-    <Section className={`flex justifyCenter`} gray>
+    <Section className={`flex justifyCenter`}>
       <div className={`relative flex limitWidth maxWidth`}>
         <div className={`maxWidth ${style.map}`} id='map' />
         <div className={`absolute maxWidth maxHeight flex justifyCenter alignCenter ${style.mapCover} ${isToggledSwitch ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}`}>

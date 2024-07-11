@@ -182,7 +182,7 @@ const request = (props: requestProps) => {
   }, [])
 
   return (
-    <Section className={`flex justifyCenter`}>
+    <Section className={`flex justifyCenter`} gray>
       <div className={`flex flexColumn alignCenter limitWidth maxWidth`} ref={props.elementRef}>
         <div className={`flex flexColumn textCenter ${style.content}`}>
           <h1 className={`title`}>발주 문의</h1>

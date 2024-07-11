@@ -1,0 +1,56 @@
+.flickingImageDarkly {
+  animation: flickingImageDarkly 500ms forwards;
+}
+@keyframes flickingImageDarkly {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(0.5);
+  }
+}
+
+.flickingImageLightly {
+  animation: flickingImageLightly 500ms forwards;
+}
+@keyframes flickingImageLightly {
+  0% {
+    filter: brightness(0.5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.introductionTitleSlideIn {
+  animation: introductionSlideIn 1000ms backwards;
+  animation-delay: 250ms;
+}
+.introductionTextSlideIn {
+  animation: introductionSlideIn 1000ms backwards;
+  animation-delay: 500ms;
+}
+@keyframes introductionSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.introductionSlideOut {
+  animation: introductionSlideOut 300ms forwards;
+}
+@keyframes introductionSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
