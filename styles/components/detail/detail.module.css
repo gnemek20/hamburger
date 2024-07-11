@@ -43,13 +43,13 @@
 
 .simplePanelBackground {
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   display: flex;
   gap: 20px;
 }
 .simplePanelContainer {
   cursor: pointer;
-  padding: 5px;
+  padding: 15px 7.5px;
 }
 .simplePanel {
   padding: 4px;
