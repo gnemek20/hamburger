@@ -12,6 +12,14 @@ a {
   text-decoration: none;
 }
 
+.flicking-viewport {
+  overflow: hidden;
+  width: 75%;
+}
+.flicking-camera {
+  display: flex;
+}
+
 .none {
   display: none;
 }
@@ -148,6 +156,9 @@ a {
 }
 .reverse {
   transform: scaleX(-1);
+}
+.whiteSpaceWrap {
+  white-space: pre-wrap;
 }
 
 .pointer {

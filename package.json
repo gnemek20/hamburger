@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@egjs/react-flicking": "^4.11.3",
     "@types/navermaps": "^3.7.5",
     "next": "14.2.1",
     "react": "^18",

@@ -10,7 +10,7 @@ interface meritProps {
 
 const merit = (props: meritProps) => {
   return (
-    <Section className={`flex justifyCenter`} gray>
+    <Section className={`flex justifyCenter`}>
       <div className={`limitWidth maxWidth ${style.container}`} ref={props.elementRef}>
         <div className={`opacityNone ${style.panel} ${animation.default} ${props.startAnimation && animation.firstPanelSlideIn}`}>
           <div className={`${style.panelPit}`} />

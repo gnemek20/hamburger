@@ -7,10 +7,6 @@
   opacity: 0.3;
   transition: all 100ms;
 }
-.header:hover {
-  opacity: 1;
-  box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.3);
-}
 
 .title {
   cursor: pointer;
@@ -25,9 +21,6 @@
   text-underline-offset: 8px;
   transition: all 100ms;
 }
-.categories > *:hover {
-  text-decoration: underline;
-}
 
 @media screen and (max-width: 767px) {
   .header {
@@ -36,5 +29,16 @@
 
   .categories {
     gap: 15px;
+  }
+}
+
+@media (hover:hover) {
+  .header:hover {
+    opacity: 1;
+    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.3);
+  }
+
+  .categories > *:hover {
+    text-decoration: underline;
   }
 }

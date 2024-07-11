@@ -1,11 +1,12 @@
 import style from "@/styles/main.module.css"
-import { Footer, Header, Introduce, Landing, Map, Merit, Product, Request } from '@/components/index';
+import { Detail, Footer, Header, Introduce, Landing, Map, Merit, Product, Request } from '@/components/index';
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
   const [intersectingElements, setintersectingElements] = useState<Array<RefObject<HTMLDivElement>>>([]);
   const introduceRef = useRef<HTMLDivElement>(null);
   const productRef = useRef<HTMLDivElement>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
   const meritRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<HTMLDivElement>(null);
@@ -18,6 +19,7 @@ const main = () => {
   const components: Array<(props: componentsProps) => JSX.Element> = [
     Introduce,
     Product,
+    Detail,
     Merit,
     Map,
     Request
@@ -25,6 +27,7 @@ const main = () => {
   const refs: Array<RefObject<HTMLDivElement>> = [
     introduceRef,
     productRef,
+    detailRef,
     meritRef,
     mapRef,
     requestRef

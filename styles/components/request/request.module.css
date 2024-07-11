@@ -16,9 +16,6 @@
   color: rgba(0, 0, 0, 0.3);
   transition: all 100ms;
 }
-.method:hover {
-  color: #333;
-}
 .selectedMethod {
   color: #333;
 }
@@ -95,9 +92,6 @@
   padding: 3px;
   gap: 3px;
 }
-.uploadedFile:hover > .fileDeleteIcon {
-  opacity: 0.5;
-}
 .fileDeleteIcon {
   opacity: 0;
   width: 14px;
@@ -160,5 +154,15 @@
   }
   .postCompleteDialog {
     gap: 15px;
+  }
+}
+
+@media (hover:hover) {
+  .method:hover {
+    color: #333;
+  }
+
+  .uploadedFile:hover > .fileDeleteIcon {
+    opacity: 0.5;
   }
 }
