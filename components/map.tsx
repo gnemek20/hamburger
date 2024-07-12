@@ -80,9 +80,9 @@ const map = () => {
             <p className={`text preventEvent`}>{ address }</p>
             {
               isCopied ? (
-                <Image className={`${style.copyOptionIcon}`} src={checkIcon.src} alt={checkIcon.alt} />
+                <Image className={`preventEvent ${style.copyOptionIcon}`} src={checkIcon.src} alt={checkIcon.alt} />
               ) : (
-                <Image className={`${style.copyOptionIcon}`} src={copyIcon.src} alt={copyIcon.alt} />
+                <Image className={`preventEvent ${style.copyOptionIcon}`} src={copyIcon.src} alt={copyIcon.alt} />
               )
             }
           </div>
