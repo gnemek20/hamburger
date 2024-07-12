@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>대양ING</title>
         <meta property="og:description" content="옷에 새로운 날개를 달다" />
+        <meta property="og:image" content="https://llpb2hr4wxbuf0dj.public.blob.vercel-storage.com/DaeYang-ceGeJm40N8tOMcF6PzPhUwwzHrrpvp.jpg" />
       </Head>
       <Script
         type="text/javascript"
