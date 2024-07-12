@@ -165,6 +165,11 @@ a {
   cursor: pointer;
 }
 
+.preventEvent {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 @media screen and (max-width: 767px) {
   .mobileFlexColumn {
     flex-direction: column;

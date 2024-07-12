@@ -2,11 +2,54 @@ import style from '@/styles/components/map/map.module.css'
 import animation from '@/styles/components/map/animation.module.css'
 import { Section } from '.'
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+
+const copyIcon = {
+  src: require('@/public/icons/copy.svg'),
+  alt: 'copyIcon'
+}
+
+const checkIcon = {
+  src: require('@/public/icons/check.svg'),
+  alt: 'checkIcon'
+}
 
 const map = () => {
   const map = useRef<Element | any>(null);
 
-  const [isToggledSwitch, setIsToggledSwitch] = useState<boolean>(false);
+  const [isToggledCover, setIsToggledCover] = useState<boolean>(true);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+
+  const address = '서울특별시 종로구 김상옥로 59, 한아빌딩 3층';
+
+  const checkClick = () => {
+    if (isClicked) {
+      setIsToggledCover(!isToggledCover);
+      setIsClicked(false);
+    }
+    else {
+      setIsClicked(true);
+      setTimeout(() => {
+        setIsClicked(false);
+      }, 300);
+    }
+  }
+
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(address);
+      setIsCopied(true);
+
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 3000);
+    }
+    catch (err) {
+      alert('복사에 실패했습니다.');
+      return
+    }
+  }
 
   useEffect(() => {
     const location: { latitude: number, longtitude: number } = {
@@ -28,16 +71,20 @@ const map = () => {
   return (
     <Section className={`flex justifyCenter`}>
       <div className={`relative flex limitWidth maxWidth`}>
-        <div className={`maxWidth ${style.map}`} id='map' />
-        <div className={`absolute maxWidth maxHeight flex justifyCenter alignCenter ${style.mapCover} ${isToggledSwitch ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}`}>
-          <h1 className={`title colorWhite`}>locked</h1>
+        <div className={`maxWidth ${style.map}`} id='map' onClick={() => checkClick()} />
+        <div className={`absolute maxWidth maxHeight flex justifyCenter alignCenter ${style.mapCover} ${!isToggledCover ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}`} onClick={() => checkClick()}>
+          <h1 className={`title textCenter preventEvent colorWhite`}>더블클릭으로<br/>잠금을 해제합니다.</h1>
         </div>
         <div className={`absolute flex mobileFlexColumn ${style.optionContainer}`}>
-          <div className={`flex alignCenter ${style.information}`}>
-            <p className={`text`}>서울특별시 종로구 김상옥로 59, 한아빌딩 3층</p>
-          </div>
-          <div className={`pointer flex alignCenter ${style.switchBackground} ${isToggledSwitch && style.toggledSwitchBackground}`} onClick={() => setIsToggledSwitch(!isToggledSwitch)}>
-            <div className={`${style.switchSlider} ${isToggledSwitch && style.toggledSwitchSlider}`} />
+          <div className={`flex alignCenter ${style.information}`} onClick={() => copyAddress()}>
+            <p className={`text preventEvent`}>{ address }</p>
+            {
+              isCopied ? (
+                <Image className={`${style.copyOptionIcon}`} src={checkIcon.src} alt={checkIcon.alt} />
+              ) : (
+                <Image className={`${style.copyOptionIcon}`} src={copyIcon.src} alt={copyIcon.alt} />
+              )
+            }
           </div>
         </div>
       </div>
