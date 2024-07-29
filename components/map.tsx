@@ -78,7 +78,19 @@ const map = () => {
           id='map'
           onClick={() => checkClick()}
         />
-        <div className={`absolute maxWidth maxHeight flex justifyCenter alignCenter ${style.mapCover} ${!isToggledCover ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}`} onClick={() => checkClick()}>
+        <div className={`
+            absolute
+            maxWidth
+            maxHeight
+            flex
+            justifyCenter
+            alignCenter
+            ${style.mapCover}
+            ${!isToggledCover ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}
+          `}
+          onClick={() => checkClick()}
+          onAnimationEnd={() => alert('ended')}
+        >
           <h1 className={`title textCenter preventEvent colorWhite`}>더블클릭으로<br/>잠금을 해제합니다.</h1>
         </div>
         <div className={`absolute flex mobileFlexColumn ${style.optionContainer}`}>
