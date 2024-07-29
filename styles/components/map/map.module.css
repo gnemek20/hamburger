@@ -27,6 +27,7 @@
 }
 
 .copyOptionIcon {
+  filter: invert(0.3);
   width: 17px;
   height: auto;
   padding: 5px;

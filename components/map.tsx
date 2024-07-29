@@ -16,6 +16,7 @@ const checkIcon = {
 
 const map = () => {
   const map = useRef<Element | any>(null);
+  const mapCoverRef = useRef<HTMLDivElement>(null);
 
   const [isToggledCover, setIsToggledCover] = useState<boolean>(true);
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -52,6 +53,19 @@ const map = () => {
   }
 
   useEffect(() => {
+    if (isToggledCover) {
+      setTimeout(() => {
+        mapCoverRef.current?.setAttribute('style', 'display: flex');
+      }, 250);
+    }
+    else {
+      setTimeout(() => {
+        mapCoverRef.current?.setAttribute('style', 'display: none');
+      }, 250);
+    }
+  }, [isToggledCover])
+
+  useEffect(() => {
     const location: { latitude: number, longtitude: number } = {
       latitude: 37.57360,
       longtitude: 127.00450
@@ -71,14 +85,17 @@ const map = () => {
   return (
     <Section className={`flex justifyCenter`}>
       <div className={`relative flex limitWidth maxWidth`}>
-        <div className={`
+        <div
+          className={`
             maxWidth
             ${style.map}
           `}
           id='map'
           onClick={() => checkClick()}
         />
-        <div className={`
+        <div
+          ref={mapCoverRef}
+          className={`
             absolute
             maxWidth
             maxHeight
@@ -89,7 +106,6 @@ const map = () => {
             ${!isToggledCover ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}
           `}
           onClick={() => checkClick()}
-          onAnimationEnd={() => alert('ended')}
         >
           <h1 className={`title textCenter preventEvent colorWhite`}>더블클릭으로<br/>잠금을 해제합니다.</h1>
         </div>
