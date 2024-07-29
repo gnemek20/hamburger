@@ -32,7 +32,7 @@ const landing = () => {
 
     animationDelay += sectionDuration;
     setTimeout(() => setAnimationCounter(2), animationDelay);
-    animationDelay += sectionDuration;
+    animationDelay += sectionDuration + 250;
     setTimeout(() => setAnimationCounter(3), animationDelay);
 
     animationDelay += 850;
