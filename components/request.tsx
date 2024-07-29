@@ -54,6 +54,17 @@ const request = (props: requestProps) => {
 
   const [selectedMethod, setSelectedMethod] = useState<'realTime' | 'email'>('realTime');
 
+  const placeholderName = '홍길동';
+  const placeholderEmail = 'example@example.com';
+  const placeholderContent = [
+    `예시 양식을 입력해주세요.`,
+    ``,
+    `여러 텍스트도 가능합니다.`,
+    `문의 사항: [지퍼, 단추, 스냅]`,
+    ``,
+    `문의 내용:`
+  ].join('\n');
+
   const changeMethod = (method: typeof selectedMethod) => {
     setName('');
     setContact('');
@@ -211,18 +222,18 @@ const request = (props: requestProps) => {
                 <div className={`${style.contactImageContainer}`}>
                   <Image className={`${style.contactImage}`} src={kakaoImage.src} alt={kakaoImage.alt} />
                 </div>
-                <div>
-                  <p className={`mobileText`}>카카오 문의</p>
-                  <p className={`mobileText`}>문의 가능 시간 00:00 ~ 24:00</p>
+                <div className={`flex flexColumn spaceBetween ${style.contactMethodText}`}>
+                  <p className={`text`}>카카오 문의</p>
+                  <p className={`mobileText`}>문의 답변 시간 00:00 ~ 24:00</p>
                 </div>
               </div>
               <div className={`flex alignCenter ${style.contactMethod}`}>
                 <div className={`${style.contactImageContainer}`}>
                   <Image className={`${style.contactImage}`} src={telephoneImage.src} alt={telephoneImage.alt} />
                 </div>
-                <div>
-                  <p className={`mobileText`}>전화 문의</p>
-                  <p className={`mobileText`}>문의 가능 시간 00:00 ~ 24:00</p>
+                <div className={`flex flexColumn spaceBetween ${style.contactMethodText}`}>
+                  <p className={`text`}>전화 문의</p>
+                  <p className={`mobileText`}>문의 답변 시간 00:00 ~ 24:00</p>
                 </div>
               </div>
             </div>
@@ -233,15 +244,15 @@ const request = (props: requestProps) => {
             <div className={`flex flexColumn maxWidth ${style.form}`}>
               <div>
                 <AdditionalText require>이름</AdditionalText>
-                <input className={`${style.formTextInput}`} type="text" spellCheck={false} onChange={(event) => setTimeout(() => inputText('name', event.target.value))} />
+                <input className={`${style.formTextInput}`} type="text" spellCheck={false} onChange={(event) => setTimeout(() => inputText('name', event.target.value))} placeholder={placeholderName} />
               </div>
               <div>
-                <AdditionalText require>연락처</AdditionalText>
-                <input className={`${style.formTextInput}`} type="text" spellCheck={false} inputMode={`${isMobile ? 'email' : 'text'}`} onChange={(event) => setTimeout(() => inputText('contact', event.target.value))} />
+                <AdditionalText require>이메일</AdditionalText>
+                <input className={`${style.formTextInput}`} type="text" spellCheck={false} inputMode={`${isMobile ? 'email' : 'text'}`} onChange={(event) => setTimeout(() => inputText('contact', event.target.value))} placeholder={placeholderEmail} />
               </div>
               <div>
                 <AdditionalText require>내용</AdditionalText>
-                <textarea className={`${style.formTextarea}`} rows={10} spellCheck={false} onChange={(event) => setTimeout(() => inputText('detail', event.target.value))} />
+                <textarea className={`${style.formTextarea}`} rows={10} spellCheck={false} onChange={(event) => setTimeout(() => inputText('detail', event.target.value))} placeholder={placeholderContent} />
               </div>
               <div>
                 <AdditionalText>첨부파일</AdditionalText>

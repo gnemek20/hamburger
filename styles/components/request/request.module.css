@@ -34,6 +34,9 @@
 .contactMethod {
   gap: 20px;
 }
+.contactMethodText {
+  height: 90%;
+}
 
 .contactImageContainer {
   cursor: pointer;
@@ -68,11 +71,17 @@
   padding: 5px;
   font-size: 14px;
 }
+.formTextInput::placeholder {
+  opacity: 50%;
+}
 .formTextarea {
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 5px;
   font-size: 14px;
   resize: vertical;
+}
+.formTextarea::placeholder {
+  opacity: 50%;
 }
 
 .formFileInput {

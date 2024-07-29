@@ -32,14 +32,11 @@ const landing = () => {
 
     animationDelay += sectionDuration;
     setTimeout(() => setAnimationCounter(2), animationDelay);
-    animationDelay += sectionDuration
+    animationDelay += sectionDuration;
     setTimeout(() => setAnimationCounter(3), animationDelay);
 
-    animationDelay += 3000;
+    animationDelay += 850;
     setTimeout(() => setAnimationCounter(4), animationDelay);
-
-    animationDelay += 500;
-    setTimeout(() => setAnimationCounter(5), animationDelay);
   }, [])
 
   return (
@@ -63,7 +60,7 @@ const landing = () => {
           ${animationCounter >= 1 && animation.blackBackgroundSlideIn}
         `}
       />
-      <div className={`textCenter ${animationCounter >= 1 && animation.questionTextSlideOut}`}>
+      <div className={`textCenter ${animationCounter === 0 && animation.questionTextZoomOut} ${animationCounter >= 1 && animation.questionTextSlideOut}`}>
         <h1 className={`title ${style.questionText}`}>보다 완벽한 옷으로</h1>
         <h1 className={`title ${style.questionText}`}>거듭난다는 것은</h1>
       </div>
@@ -71,7 +68,7 @@ const landing = () => {
       <div className={`absolute flex fullWidth ${animationCounter >= 2 && animation.sectionMove} ${animationCounter >= 3 && animation.sectionfadeOut}`}>
         <div className={`textStart flex flexColumn justifyCenter alignCenter ${style.section}`}>
           <div className={`opacityNone ${style.content}`} ref={zipperRef}>
-            <h1 className={`title colorWhite maxWidth ${style.zipperText} ${animationCounter >= 1 && animation.sectionTextSlide}`}>부드러운 지퍼를</h1>
+            <h1 className={`title colorWhite maxWidth ${style.zipperText} ${animationCounter >= 1 && animation.sectionTextSlide}`}>부드러운 Zipper 를</h1>
             <div className={`relative ${style.zipper}`}>
               <div className={`${style.zipperLine}`} />
               <div className={`${style.zipperLine}`} />
@@ -89,7 +86,7 @@ const landing = () => {
               </div>
               <div className={`absolute ${style.clotheButtonLine}`} />
             </div>
-            <h1 className={`title colorWhite maxWidth ${style.buttonText} ${animationCounter >= 2 && animation.sectionTextSlide}`}>헤지지 않는 단추를</h1>
+            <h1 className={`title colorWhite maxWidth ${style.buttonText} ${animationCounter >= 2 && animation.sectionTextSlide}`}>개성있는 Button & Snap 을 달아준다는 것</h1>
           </div>
         </div>
       </div>
@@ -103,15 +100,11 @@ const landing = () => {
           ${animationCounter >= 3 && animation.whiteBackgroundSlideIn}
         `}
       />
-      <div className={`absolute opacityNone ${animationCounter >= 3 && animation.solutionFadeIn} ${animationCounter >= 4 && animation.solutionFadeOut}`}>
-        <h1 className={`title`}>달아준다는 것.</h1>
-      </div>
 
       <div className={`absolute flex flexColumn alignCenter`}>
-        <h1 className={`title opacityNone ${style.resultSubTitle} ${animationCounter >= 5 && animation.resultSubTitleSlideIn}`}>옷에 새로운 날개를 달다</h1>
-        <div className={`opacityNone ${style.resultLine} ${animationCounter >= 5 && animation.resultLineExpand}`} />
-        {/* <h1 className={`title opacityNone ${style.resultTitle} ${animationCounter >= 5 && animation.resultTitleSlideIn}`}>대양ING</h1> */}
-        <Image className={`title opacityNone ${style.resultTitle} ${animationCounter >= 5 && animation.resultTitleSlideIn}`} src={logo.src} alt={logo.alt} />
+        <h1 className={`title opacityNone ${style.resultSubTitle} ${animationCounter >= 4 && animation.resultSubTitleSlideIn}`}>패션에 새로운 날개를 달다</h1>
+        <div className={`opacityNone ${style.resultLine} ${animationCounter >= 4 && animation.resultLineExpand}`} />
+        <Image className={`title opacityNone ${style.resultTitle} ${animationCounter >= 4 && animation.resultTitleSlideIn}`} src={logo.src} alt={logo.alt} />
       </div>
 
       <EmphasizeScroll className={`opacityNone ${animationCounter >= 5 && animation.emphasizeScrollFadeIn}`} />
