@@ -1,12 +1,15 @@
 import style from '@/styles/components/header/header.module.css'
 import animation from '@/styles/components/header/animation.module.css'
 import { RefObject, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface headerProps {
   requestComponentRef: RefObject<HTMLDivElement>
 }
 
 const header = (props: headerProps) => {
+  const router = useRouter();
+
   const moveToRequestComponent = () => {
     const requestComponent = props.requestComponentRef.current;
     const headerOffset = 100;
@@ -19,16 +22,18 @@ const header = (props: headerProps) => {
     });
   }
 
+  const pageReload = () => {
+    router.reload();
+  }
+
   return (
     <div className={`flex justifyCenter ${style.header}`}>
       <div className={`limitWidth maxWidth flex spaceBetween`}>
         <div className={`${style.title}`}>
-          <p className={`text colorWhite`}>대양 ING</p>
+          <p className={`text colorWhite`} onClick={() => pageReload()}>대양 ING</p>
         </div>
         <div className={`${style.categories}`}>
-          <p className={`text colorWhite`}>Category1</p>
-          <p className={`text colorWhite`}>Category2</p>
-          <p className={`text colorWhite`} onClick={() => moveToRequestComponent()}>발주 문의</p>
+          <p className={`text colorWhite`} onClick={() => moveToRequestComponent()}>발주 문의로 넘어가기</p>
         </div>
       </div>
     </div>

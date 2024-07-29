@@ -18,7 +18,7 @@ const introduce = (props: introduceProps) => {
     <Section className={`flex justifyCenter`} gray>
       <div ref={props.elementRef} className={`flex limitWidth maxWidth alignEnd mobileAlignStart mobileFlexColumn`}>
         <div className={`flex flexColumn ${style.content}`}>
-          <h1 className={`title opacityNone ${props.startAnimation && animation.titleSlideIn}`}>샘플 텍스트</h1>
+          <h1 className={`title opacityNone ${props.startAnimation && animation.titleSlideIn}`}>대양 아이엔지란?</h1>
           <div className={`opacityNone ${props.startAnimation && animation.textSlideIn}`}>
             <p className={`text`}>국내 최고의 패션 리더 그룹사들의 파트너로서</p>
             <p className={`text`}>20여 년간 끊임없는 신뢰와 열정으로 함께 걸어가고 있습니다</p>

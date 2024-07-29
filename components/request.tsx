@@ -58,8 +58,8 @@ const request = (props: requestProps) => {
   const placeholderEmail = 'example@example.com';
   const placeholderContent = [
     `예시 양식을 입력해주세요.`,
+    `여러줄로 구성할 수 있습니다.`,
     ``,
-    `여러 텍스트도 가능합니다.`,
     `문의 사항: [지퍼, 단추, 스냅]`,
     ``,
     `문의 내용:`
