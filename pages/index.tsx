@@ -1,11 +1,12 @@
 import style from "@/styles/main.module.css"
-import { Detail, Footer, Header, Introduce, Landing, Map, Merit, Product, Request } from '@/components/index';
+import { Detail, Footer, Header, Introduce, Landing, Map, Merit, Request, ZipperStructure } from '@/components/index';
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
   const [intersectingElements, setintersectingElements] = useState<Array<RefObject<HTMLDivElement>>>([]);
   const introduceRef = useRef<HTMLDivElement>(null);
-  const productRef = useRef<HTMLDivElement>(null);
+  // const productRef = useRef<HTMLDivElement>(null);
+  const zipperStructureRef = useRef<HTMLDivElement>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const meritRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -18,7 +19,8 @@ const main = () => {
 
   const components: Array<(props: componentsProps) => JSX.Element> = [
     Introduce,
-    Product,
+    // Product,
+    ZipperStructure,
     Detail,
     Merit,
     Map,
@@ -26,7 +28,8 @@ const main = () => {
   ];
   const refs: Array<RefObject<HTMLDivElement>> = [
     introduceRef,
-    productRef,
+    // productRef,
+    zipperStructureRef,
     detailRef,
     meritRef,
     mapRef,
@@ -51,7 +54,7 @@ const main = () => {
             })
           }
         })
-      }, { threshold: 0.3 })
+      }, { threshold: 0 })
 
       refs.forEach((ref) => {
         ref.current && observer.observe(ref.current);

@@ -33,7 +33,7 @@ const header = (props: headerProps) => {
           <p className={`text colorWhite`} onClick={() => pageReload()}>대양 ING</p>
         </div>
         <div className={`${style.categories}`}>
-          <p className={`text colorWhite`} onClick={() => moveToRequestComponent()}>발주 문의로 넘어가기</p>
+          <p className={`text colorWhite`} onClick={() => moveToRequestComponent()}>발주하러 가기</p>
         </div>
       </div>
     </div>

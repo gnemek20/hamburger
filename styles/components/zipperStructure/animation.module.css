@@ -1,0 +1,47 @@
+.textFadeIn {
+  animation: textFadeIn 1500ms both;
+  animation-delay: 250ms;
+}
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.horizontalLineExpand {
+  animation: horizontalLineExpand 1000ms forwards;
+}
+@keyframes horizontalLineExpand {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.verticalLineExpand {
+  animation: verticalLineExpand 1000ms both;
+  animation-delay: 1000ms;
+}
+@keyframes verticalLineExpand {
+  0% {
+    opacity: 0;
+    height: 0px;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    height: 40px;
+  }
+}
