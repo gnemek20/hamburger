@@ -1,11 +1,16 @@
 import style from "@/styles/main.module.css"
 import { Detail, Footer, Header, Introduce, Landing, Map, Merit, Request, ZipperStructure } from '@/components/index';
+// 폐기 예정
+import { Product } from '@/components/index';
+// 
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
   const [intersectingElements, setintersectingElements] = useState<Array<RefObject<HTMLDivElement>>>([]);
   const introduceRef = useRef<HTMLDivElement>(null);
-  // const productRef = useRef<HTMLDivElement>(null);
+  // 폐기 예정
+  const productRef = useRef<HTMLDivElement>(null);
+  // 
   const zipperStructureRef = useRef<HTMLDivElement>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const meritRef = useRef<HTMLDivElement>(null);
@@ -19,7 +24,9 @@ const main = () => {
 
   const components: Array<(props: componentsProps) => JSX.Element> = [
     Introduce,
-    // Product,
+    // 폐기 예정
+    Product,
+    // 
     ZipperStructure,
     Detail,
     Merit,
@@ -28,7 +35,9 @@ const main = () => {
   ];
   const refs: Array<RefObject<HTMLDivElement>> = [
     introduceRef,
-    // productRef,
+    // 폐기 예정
+    productRef,
+    // 
     zipperStructureRef,
     detailRef,
     meritRef,

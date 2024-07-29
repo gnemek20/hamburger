@@ -77,6 +77,7 @@
 .analysationTitle {
   opacity: 0;
   color: rgba(0, 0, 0, 0.2);
+  user-select: none;
   transition: all 100ms;
 }
 .hoveredAnalysationTitle {
@@ -84,6 +85,29 @@
 }
 .reversedAnalysationTitle {
   transform: rotate(180deg);
+}
+
+.dialog {
+  z-index: 1;
+  position: absolute;
+  width: 65%;
+  height: 80%;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+.zipperDialog {
+  transform: translateY(65%);
+  bottom: 0;
+  right: 0;
+}
+.sliderDialog {
+  transform: translateY(-65%);
+  top: 0;
+  left: 0;
+}
+.dialogTag {
+  padding: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 767px) {
@@ -103,5 +127,16 @@
   }
   .reversedAnalysation {
     transform: rotate(180deg) translateX(calc(50% - 1px)) translateY(calc(-50% + 50% - 50px));
+  }
+
+  .dialog {
+    width: 80%;
+    height: 70%;
+  }
+  .zipperDialog {
+    transform: translateY(50%);
+  }
+  .sliderDialog {
+    transform: translateY(-50%);
   }
 }

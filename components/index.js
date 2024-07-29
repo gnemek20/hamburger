@@ -1,7 +1,9 @@
 export { default as Landing } from './landing'
 export { default as Header } from './header'
 export { default as Introduce } from './introduce'
-// export { default as Product } from './product'
+// 폐기 예정
+export { default as Product } from './product'
+// 
 export { default as ZipperStructure } from './zipperStructure'
 export { default as Detail } from './detail'
 export { default as Merit } from './merit'

@@ -21,6 +21,7 @@ const product = (props: productProps) => {
   return (
     <Section className={`flex justifyCenter`}>
       <div className={`limitWidth maxWidth flex flexColumn ${style.container}`} ref={props.elementRef}>
+        <h1>폐기 예정</h1>
         <div className={`opacityNone ${style.panel} ${props.startAnimation && animation.panelSlideIn}`}>
           <ImageFrame className={`${style.thumbnail}`} image={zipperImage} />
           <div className={`${style.thumbnailCover}`} />
@@ -45,6 +46,7 @@ const product = (props: productProps) => {
             </div>
           </div>
         </div>
+        <h1>여기까지</h1>
       </div>
     </Section>
   )
