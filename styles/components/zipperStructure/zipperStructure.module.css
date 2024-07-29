@@ -76,7 +76,7 @@
 
 .analysationTitle {
   opacity: 0;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.2);
   transition: all 100ms;
 }
 .hoveredAnalysationTitle {

@@ -130,7 +130,7 @@ const detail = (props: detailProps) => {
   }
 
   return (
-    <div className={`flex justifyCenter maxWidth ${style.detail}`} ref={props.elementRef}>
+    <div className={`flex justifyCenter maxWidth ${style.detail}`}>
       <Flicking onMoveStart={() => startMoveAnimation()} onMoveEnd={() => finishMoveAnimation()} onChanged={() => recordFlickingStatus()} ref={flickingRef}>
         {
           panelList.map((panel, index) => (
@@ -151,7 +151,7 @@ const detail = (props: detailProps) => {
           ))
         }
       </div>
-      <div className={`flex flexColumn textCenter ${style.introduction}`}>
+      <div className={`flex flexColumn textCenter ${style.introduction}`} ref={props.elementRef}>
         { introduction(panelList[panelIndex].title, panelList[panelIndex].text) }
       </div>
     </div>
