@@ -71,11 +71,10 @@ const map = () => {
   return (
     <Section className={`flex justifyCenter`}>
       <div className={`relative flex limitWidth maxWidth`}>
-        {/* <div className={`maxWidth ${style.map}`} id='map' onClick={() => checkClick()} /> */}
-        <div className={`maxWidth ${style.map}`} id='map' />
-        <div className={`absolute maxWidth maxHeight flex justifyCenter alignCenter ${style.mapCover} ${!isToggledCover ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}`} onClick={() => checkClick()}>
+        <div className={`maxWidth ${style.map}`} id='map' onClick={() => checkClick()} />
+        {/* <div className={`absolute maxWidth maxHeight flex justifyCenter alignCenter ${style.mapCover} ${!isToggledCover ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}`} onClick={() => checkClick()}>
           <h1 className={`title textCenter preventEvent colorWhite`}>더블클릭으로<br/>잠금을 해제합니다.</h1>
-        </div>
+        </div> */}
         <div className={`absolute flex mobileFlexColumn ${style.optionContainer}`}>
           <div className={`flex alignCenter ${style.information}`} onClick={() => copyAddress()}>
             <p className={`text preventEvent`}>{ address }</p>
