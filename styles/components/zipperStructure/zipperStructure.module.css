@@ -148,7 +148,7 @@
 
   .dialog {
     width: 50%;
-    height: 125%;
+    height: 175%;
   }
   .zipperDialog {
     transform: translateY(-50%);
@@ -161,6 +161,6 @@
 
   .flickingPanel {
     display: flex;
-    min-height: 55%;
+    min-height: 65%;
   }
 }
