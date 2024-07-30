@@ -90,24 +90,41 @@
 .dialog {
   z-index: 1;
   position: absolute;
-  width: 65%;
+  width: 62.5%;
   height: 80%;
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
   background-color: white;
 }
 .zipperDialog {
-  transform: translateY(65%);
-  bottom: 0;
-  right: 0;
-}
-.sliderDialog {
   transform: translateY(-65%);
   top: 0;
   left: 0;
 }
-.dialogTag {
-  padding: 5px;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+.sliderDialog {
+  transform: translateY(65%);
+  bottom: 0;
+  right: 0;
+}
+
+.flickingPanel {
+  display: flex;
+  min-width: 25%;
+}
+.flickingPanel > img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (hover:hover) {
+  .dialog:hover {
+    cursor: grab;
+  }
+  .dialog:active {
+    cursor: grabbing;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -130,13 +147,20 @@
   }
 
   .dialog {
-    width: 80%;
-    height: 70%;
+    width: 50%;
+    height: 125%;
   }
   .zipperDialog {
-    transform: translateY(50%);
+    transform: translateY(-50%);
+    top: 50%;
   }
   .sliderDialog {
-    transform: translateY(-50%);
+    transform: translateY(50%);
+    bottom: 50%;
+  }
+
+  .flickingPanel {
+    display: flex;
+    min-height: 55%;
   }
 }

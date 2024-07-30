@@ -2,7 +2,8 @@ import style from '@/styles/components/zipperStructure/zipperStructure.module.cs
 import animation from '@/styles/components/zipperStructure/animation.module.css'
 import { Section } from '.'
 import Image from 'next/image'
-import { RefObject, useEffect, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
+import Flicking from '@egjs/react-flicking'
 
 const zipperSliderIcon = {
   src: require('@/public/icons/zipperSlider.svg'),
@@ -15,9 +16,35 @@ interface zipperStructureProps {
 }
 
 const ZipperStructure = (props: zipperStructureProps) => {
+  const flickingRef = useRef<Flicking>(null);
+
   type analysationTag = 'Zipper' | 'Slider & Puller' | '';
   const [hoveredTag, setHoveredTag] = useState<analysationTag>('');
   const [toggledTag, setToggledTag] = useState<analysationTag>('');
+
+  const [flickingHorizontal, setFlickingHorizontal] = useState<boolean>(true);
+
+  // 커스텀 이미지로 채울것
+  const clotheButtonImage = {
+    src: require('@/public/images/clotheButton.jpg'),
+    alt: 'clothe'
+  }
+  const shoeImage = {
+    src: require('@/public/images/shoe.jpg'),
+    alt: 'shoe'
+  }
+  const zipperImage = {
+    src: require('@/public/images/zipper.jpg'),
+    alt: 'zipper'
+  }
+  const panelList: Array<typeof clotheButtonImage> = [
+    clotheButtonImage,
+    shoeImage,
+    zipperImage,
+    clotheButtonImage,
+    shoeImage,
+    zipperImage
+  ];
 
   const changeToggledTag = (tag: analysationTag) => {
     if (toggledTag === '' || toggledTag !== tag) {
@@ -74,13 +101,32 @@ const ZipperStructure = (props: zipperStructureProps) => {
 
   const dialog = toggledTag !== '' &&  (
     <div className={`flex flexColumn ${style.dialog} ${toggledTag === 'Zipper' ? style.zipperDialog : toggledTag === 'Slider & Puller' ? style.sliderDialog : ''}`}>
-      <div className={`flex`}>
-        <div className={`${style.dialogTag}`}>
-          <p className={`additionalText`}>{ toggledTag }</p>
-        </div>
-      </div>
+      <Flicking ref={flickingRef} horizontal={flickingHorizontal} circular={true}>
+        {
+          panelList.map((panel, index) => (
+            <div className={`flex justifyCenter maxWidth ${style.flickingPanel}`} key={index}>
+              <Image src={panel.src} alt={panel.alt} />
+            </div>
+          ))
+        }
+      </Flicking>
     </div>
   )
+
+  useEffect(() => {
+    if (toggledTag !== '') {
+      const innerWidth = window.innerWidth;
+      const flickingCameraElement = document.getElementsByClassName('flicking-camera')[0];
+
+      if (innerWidth <= 767) {
+        setFlickingHorizontal(false);
+        flickingCameraElement.setAttribute('style', 'flex-direction: column');
+      }
+      else {
+        setFlickingHorizontal(true);
+      }
+    }
+  }, [toggledTag])
 
   return (
     <Section className={`flex justifyCenter alignCenter ${style.zipperStructure}`} height={200}>
