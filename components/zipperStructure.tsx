@@ -4,8 +4,14 @@ import { Section } from '.'
 import Image from 'next/image'
 import { RefObject, useEffect, useRef, useState } from 'react'
 import Flicking from '@egjs/react-flicking'
+import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 
-const zipperSliderIcon = {
+interface imageProps {
+  src: StaticImport
+  alt: string
+}
+
+const zipperSliderIcon: imageProps = {
   src: require('@/public/icons/zipperSlider.svg'),
   alt: 'zipperSliderIcon'
 }
@@ -15,7 +21,7 @@ interface zipperStructureProps {
   startAnimation: boolean
 }
 
-const ZipperStructure = (props: zipperStructureProps) => {
+const zipperStructure = (props: zipperStructureProps) => {
   const flickingRef = useRef<Flicking>(null);
 
   type analysationTag = 'Zipper' | 'Slider & Puller' | '';
@@ -37,14 +43,14 @@ const ZipperStructure = (props: zipperStructureProps) => {
     src: require('@/public/images/zipper.jpg'),
     alt: 'zipper'
   }
-  const panelList: Array<typeof clotheButtonImage> = [
-    clotheButtonImage,
-    shoeImage,
-    zipperImage,
-    clotheButtonImage,
-    shoeImage,
-    zipperImage
-  ];
+  
+  const [panelList, setPanelList] = useState<Array<imageProps>>([]);
+  const zipperImageList = [clotheButtonImage, shoeImage, clotheButtonImage, shoeImage, clotheButtonImage, shoeImage];
+  const sliderImageList = [shoeImage, zipperImage, shoeImage, zipperImage, shoeImage, zipperImage];
+  const imageList = {
+    'Zipper': zipperImageList,
+    'Slider & Puller': sliderImageList
+  }
 
   const changeToggledTag = (tag: analysationTag) => {
     if (toggledTag === '' || toggledTag !== tag) {
@@ -99,9 +105,9 @@ const ZipperStructure = (props: zipperStructureProps) => {
     )
   }
 
-  const dialog = toggledTag !== '' &&  (
+  const dialog = toggledTag !== '' && (
     <div className={`flex flexColumn ${style.dialog} ${toggledTag === 'Zipper' ? style.zipperDialog : toggledTag === 'Slider & Puller' ? style.sliderDialog : ''}`}>
-      <Flicking ref={flickingRef} horizontal={flickingHorizontal} circular={true}>
+      <Flicking ref={flickingRef} horizontal={flickingHorizontal} circular={true} renderOnSameKey={true}>
         {
           panelList.map((panel, index) => (
             <div className={`flex justifyCenter maxWidth ${style.flickingPanel}`} key={index}>
@@ -117,6 +123,7 @@ const ZipperStructure = (props: zipperStructureProps) => {
     if (toggledTag !== '') {
       const innerWidth = window.innerWidth;
       const flickingCameraElement = document.getElementsByClassName('flicking-camera')[0];
+      setPanelList(imageList[toggledTag]);
 
       if (innerWidth <= 767) {
         setFlickingHorizontal(false);
@@ -141,4 +148,4 @@ const ZipperStructure = (props: zipperStructureProps) => {
   )
 }
 
-export default ZipperStructure
+export default zipperStructure

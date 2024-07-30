@@ -108,7 +108,7 @@
 
 .flickingPanel {
   display: flex;
-  min-width: 25%;
+  min-width: 30%;
 }
 .flickingPanel > img {
   width: 100%;
