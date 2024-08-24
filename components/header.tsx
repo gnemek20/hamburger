@@ -65,7 +65,14 @@ const header = (props: headerProps) => {
       // }
 
       // if (!debounceTimer) hideHeader();
-      hideHeader();
+      // hideHeader();
+
+      if (!throttleTimer) {
+        throttleTimer = setTimeout(() => {
+          throttleTimer = null;
+          hideHeader();
+        }, 100)
+      }
 
       debounceTimer = setTimeout(() => {
         debounceTimer = null;
