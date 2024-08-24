@@ -57,6 +57,13 @@ const header = (props: headerProps) => {
     }
   }
 
+  const dummy = () => {
+    headerRef.current?.setAttribute('style', 'background-color: green');
+  }
+  const dummy1 = () => {
+    headerRef.current?.setAttribute('style', 'background-color: red');
+  }
+
   const timer = (func: Function, delay: number) => {
     let throttleTimer: NodeJS.Timeout | null;
     let debounceTimer: NodeJS.Timeout | null;
@@ -71,11 +78,13 @@ const header = (props: headerProps) => {
       //   }, delay)
       // }
 
-      if (!debounceTimer) hideHeader();
+      // if (!debounceTimer) hideHeader();
+      if (!debounceTimer) dummy1();
 
       debounceTimer = setTimeout(() => {
         debounceTimer = null;
-        func.apply(this);
+        // func.apply(this);
+        dummy();
       }, delay)
     }
   }
