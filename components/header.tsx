@@ -27,17 +27,6 @@ const header = (props: headerProps) => {
     router.reload();
   }
 
-  const checkHeaderTop = () => {
-    const headerTop = headerRef.current?.getBoundingClientRect().top;
-
-    if (headerTop !== 0) {
-      showHeader();
-    }
-    else {
-      hideHeader();
-    }
-  }
-
   const hideHeader = () => {
     const headerPos = headerRef.current?.getBoundingClientRect().top;
 
@@ -50,22 +39,12 @@ const header = (props: headerProps) => {
     headerRef.current?.setAttribute('style', 'opacity: 1');
   }
 
-  const timer = (func: Function, delay: number) => {
+  const timer = () => {
     let throttleTimer: NodeJS.Timeout | null;
     let debounceTimer: NodeJS.Timeout | null;
     
     return () => {
       clearTimeout(debounceTimer as NodeJS.Timeout);
-
-      // if (!throttleTimer) {
-      //   throttleTimer = setTimeout(() => {
-      //     throttleTimer = null;
-      //     checkHeaderTop();
-      //   }, delay)
-      // }
-
-      // if (!debounceTimer) hideHeader();
-      // hideHeader();
 
       if (!throttleTimer) {
         throttleTimer = setTimeout(() => {
@@ -76,16 +55,16 @@ const header = (props: headerProps) => {
 
       debounceTimer = setTimeout(() => {
         debounceTimer = null;
-        func.apply(this);
-      }, delay)
+        showHeader();
+      }, 800)
     }
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', timer(showHeader, 350));
+    window.addEventListener('scroll', timer());
 
     return() => {
-      window.removeEventListener('scroll', timer(showHeader, 350));
+      window.removeEventListener('scroll', timer());
     }
   }, [])
 
