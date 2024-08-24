@@ -71,6 +71,8 @@ const header = (props: headerProps) => {
         }, delay)
       }
 
+      if (!debounceTimer) hideHeader();
+
       debounceTimer = setTimeout(() => {
         debounceTimer = null;
         func.apply(this);
@@ -79,10 +81,10 @@ const header = (props: headerProps) => {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', timer(showHeader, 200));
+    window.addEventListener('scroll', timer(showHeader, 500));
 
     return() => {
-      window.removeEventListener('scroll', timer(showHeader, 200));
+      window.removeEventListener('scroll', timer(showHeader, 500));
     }
   }, [])
 
