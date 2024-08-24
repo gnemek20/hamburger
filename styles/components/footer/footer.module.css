@@ -10,6 +10,9 @@
 .textContainer {
   gap: 5px;
 }
+.textContainer:nth-last-child(1) {
+  text-align: end;
+}
 
 .information > div {
   flex: 1;

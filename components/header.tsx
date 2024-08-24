@@ -1,6 +1,6 @@
 import style from '@/styles/components/header/header.module.css'
 import animation from '@/styles/components/header/animation.module.css'
-import { RefObject, useEffect } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 interface headerProps {
@@ -9,6 +9,7 @@ interface headerProps {
 
 const header = (props: headerProps) => {
   const router = useRouter();
+  const headerRef = useRef<HTMLDivElement>(null);
 
   const moveToRequestComponent = () => {
     const requestComponent = props.requestComponentRef.current;
@@ -26,8 +27,67 @@ const header = (props: headerProps) => {
     router.reload();
   }
 
+  const checkHeaderTop = () => {
+    const headerTop = headerRef.current?.getBoundingClientRect().top;
+
+    if (headerTop !== 0) {
+      headerRef.current?.classList.remove(animation.headerFadeOut);
+      headerRef.current?.classList.add(animation.headerFadeIn);
+    }
+    else {
+      hideHeader();
+    }
+  }
+
+  const hideHeader = () => {
+    const headerPos = headerRef.current?.getBoundingClientRect().top;
+
+    if (headerPos === 0) {
+      headerRef.current?.classList.remove(animation.headerFadeIn);
+      headerRef.current?.classList.add(animation.headerFadeOut);
+    }
+  }
+
+  const showHeader = () => {
+    const headerPos = headerRef.current?.getBoundingClientRect().top;
+
+    if (headerPos === 0) {
+      headerRef.current?.classList.remove(animation.headerFadeOut);
+      headerRef.current?.classList.add(animation.headerFadeIn);
+    }
+  }
+
+  const timer = (func: Function, delay: number) => {
+    let throttleTimer: NodeJS.Timeout | null;
+    let debounceTimer: NodeJS.Timeout | null;
+    
+    return () => {
+      clearTimeout(debounceTimer as NodeJS.Timeout);
+
+      if (!throttleTimer) {
+        throttleTimer = setTimeout(() => {
+          throttleTimer = null;
+          checkHeaderTop();
+        }, delay)
+      }
+
+      debounceTimer = setTimeout(() => {
+        debounceTimer = null;
+        func.apply(this);
+      }, delay)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', timer(showHeader, 200));
+
+    return() => {
+      window.removeEventListener('scroll', timer(showHeader, 200));
+    }
+  }, [])
+
   return (
-    <div className={`flex justifyCenter ${style.header}`}>
+    <div ref={headerRef} className={`flex justifyCenter ${style.header}`}>
       <div className={`limitWidth maxWidth flex spaceBetween`}>
         <div className={`${style.title}`}>
           <p className={`text colorWhite`} onClick={() => pageReload()}>대양 ING</p>

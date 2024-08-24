@@ -105,19 +105,28 @@ const zipperStructure = (props: zipperStructureProps) => {
     )
   }
 
-  const dialog = toggledTag !== '' && (
-    <div className={`flex flexColumn ${style.dialog} ${toggledTag === 'Zipper' ? style.zipperDialog : toggledTag === 'Slider & Puller' ? style.sliderDialog : ''}`}>
-      <Flicking ref={flickingRef} horizontal={flickingHorizontal} circular={true} renderOnSameKey={true}>
-        {
-          panelList.map((panel, index) => (
-            <div className={`flex justifyCenter maxWidth ${style.flickingPanel}`} key={index}>
-              <Image src={panel.src} alt={panel.alt} />
-            </div>
-          ))
-        }
-      </Flicking>
-    </div>
-  )
+  const dialog = (tag: analysationTag) => {
+    return toggledTag === tag && (
+      <div
+        className={`
+          flex
+          flexColumn
+          ${style.dialog}
+          ${tag === 'Zipper' ? style.zipperDialog : tag === 'Slider & Puller' ? style.sliderDialog : ''}
+        `}
+      >
+        <Flicking ref={flickingRef} horizontal={flickingHorizontal} circular={true} renderOnSameKey={true}>
+          {
+            panelList.map((panel, index) => (
+              <div className={`flex justifyCenter maxWidth ${style.flickingPanel}`} key={index}>
+                <Image src={panel.src} alt={panel.alt} />
+              </div>
+            ))
+          }
+        </Flicking>
+      </div>
+    )
+  }
 
   useEffect(() => {
     if (toggledTag !== '') {
@@ -139,7 +148,8 @@ const zipperStructure = (props: zipperStructureProps) => {
     <Section className={`flex justifyCenter alignCenter ${style.zipperStructure}`} height={200}>
       <div className={`flex flexColumn justifyCenter limitWidth maxWidth maxHeight relative`} ref={props.elementRef}>
         <p className={`additionalText textCenter ${style.explanationText}`}>아이콘이나 텍스트를 클릭해보세요.</p>
-        { dialog }
+        { dialog('Zipper') }
+        { dialog('Slider & Puller') }
         { zipper }
         { analysation('Zipper') }
         { analysation('Slider & Puller', true) }

@@ -3,9 +3,8 @@
   position: sticky;
   top: 0px;
   padding: 20px 20px;
-  /* background-color: dimgray; */
-  background-color: rgb(89, 77, 73);
-  opacity: 0.3;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.3);
   transition: all 100ms;
 }
 
@@ -24,21 +23,12 @@
 }
 
 @media screen and (max-width: 767px) {
-  .header {
-    opacity: 0.7;
-  }
-
   .categories {
     gap: 15px;
   }
 }
 
 @media (hover:hover) {
-  .header:hover {
-    opacity: 1;
-    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.3);
-  }
-
   .categories > *:hover {
     text-decoration: underline;
   }

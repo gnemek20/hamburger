@@ -7,6 +7,7 @@ export { default as Merit } from './merit'
 export { default as Map } from './map'
 export { default as Request } from './request'
 export { default as Footer } from './footer'
+export { default as Background } from './background'
 
 export { default as Section } from './section'
 export { default as ImageFrame } from './imageFrame'
