@@ -59,9 +59,11 @@ const header = (props: headerProps) => {
 
   const dummy = () => {
     headerRef.current?.setAttribute('style', 'background-color: green');
+    headerRef.current?.setAttribute('style', 'opacity: 1');
   }
   const dummy1 = () => {
     headerRef.current?.setAttribute('style', 'background-color: red');
+    headerRef.current?.setAttribute('style', 'opacity: 0');
   }
 
   const timer = (func: Function, delay: number) => {
