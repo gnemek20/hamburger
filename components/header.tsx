@@ -64,7 +64,8 @@ const header = (props: headerProps) => {
       //   }, delay)
       // }
 
-      if (!debounceTimer) hideHeader();
+      // if (!debounceTimer) hideHeader();
+      hideHeader();
 
       debounceTimer = setTimeout(() => {
         debounceTimer = null;
