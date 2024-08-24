@@ -64,12 +64,12 @@ const header = (props: headerProps) => {
     return () => {
       clearTimeout(debounceTimer as NodeJS.Timeout);
 
-      if (!throttleTimer) {
-        throttleTimer = setTimeout(() => {
-          throttleTimer = null;
-          checkHeaderTop();
-        }, delay)
-      }
+      // if (!throttleTimer) {
+      //   throttleTimer = setTimeout(() => {
+      //     throttleTimer = null;
+      //     checkHeaderTop();
+      //   }, delay)
+      // }
 
       if (!debounceTimer) hideHeader();
 
