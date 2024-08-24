@@ -82,10 +82,10 @@ const header = (props: headerProps) => {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', timer(showHeader, 500));
+    window.addEventListener('scroll', timer(showHeader, 350));
 
     return() => {
-      window.removeEventListener('scroll', timer(showHeader, 500));
+      window.removeEventListener('scroll', timer(showHeader, 350));
     }
   }, [])
 
