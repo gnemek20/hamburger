@@ -31,8 +31,7 @@ const header = (props: headerProps) => {
     const headerTop = headerRef.current?.getBoundingClientRect().top;
 
     if (headerTop !== 0) {
-      headerRef.current?.classList.remove(animation.headerFadeOut);
-      headerRef.current?.classList.add(animation.headerFadeIn);
+      showHeader();
     }
     else {
       hideHeader();
@@ -43,27 +42,12 @@ const header = (props: headerProps) => {
     const headerPos = headerRef.current?.getBoundingClientRect().top;
 
     if (headerPos === 0) {
-      headerRef.current?.classList.remove(animation.headerFadeIn);
-      headerRef.current?.classList.add(animation.headerFadeOut);
+      headerRef.current?.setAttribute('style', 'opacity: 0');
     }
   }
-
+  
   const showHeader = () => {
-    const headerPos = headerRef.current?.getBoundingClientRect().top;
-
-    if (headerPos === 0) {
-      headerRef.current?.classList.remove(animation.headerFadeOut);
-      headerRef.current?.classList.add(animation.headerFadeIn);
-    }
-  }
-
-  const dummy = () => {
-    headerRef.current?.setAttribute('style', 'background-color: green');
     headerRef.current?.setAttribute('style', 'opacity: 1');
-  }
-  const dummy1 = () => {
-    headerRef.current?.setAttribute('style', 'background-color: red');
-    headerRef.current?.setAttribute('style', 'opacity: 0');
   }
 
   const timer = (func: Function, delay: number) => {
@@ -73,20 +57,18 @@ const header = (props: headerProps) => {
     return () => {
       clearTimeout(debounceTimer as NodeJS.Timeout);
 
-      // if (!throttleTimer) {
-      //   throttleTimer = setTimeout(() => {
-      //     throttleTimer = null;
-      //     checkHeaderTop();
-      //   }, delay)
-      // }
+      if (!throttleTimer) {
+        throttleTimer = setTimeout(() => {
+          throttleTimer = null;
+          checkHeaderTop();
+        }, delay)
+      }
 
-      // if (!debounceTimer) hideHeader();
-      if (!debounceTimer) dummy1();
+      if (!debounceTimer) hideHeader();
 
       debounceTimer = setTimeout(() => {
         debounceTimer = null;
-        // func.apply(this);
-        dummy();
+        func.apply(this);
       }, delay)
     }
   }
