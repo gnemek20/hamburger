@@ -1,7 +1,7 @@
 .detail {
   position: relative;
   min-height: 500px;
-  max-height: 35vw;
+  max-height: 30vw;
 }
 
 .flickingPanel {
@@ -67,6 +67,8 @@
   top: 50%;
   left: 50%;
   gap: 20px;
+  touch-action: none;
+  pointer-events: none;
 }
 
 @media (hover:hover) {

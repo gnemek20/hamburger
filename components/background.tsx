@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 interface backgroundProps {
   image: StaticImport
+  gradation?: boolean
 }
 
 const background = (props: backgroundProps) => {
@@ -15,7 +16,7 @@ const background = (props: backgroundProps) => {
   return (
     <div className={`${style.background}`}>
       <Image src={background.src} alt={background.alt} />
-      <div className={`${style.gradation}`} />
+      <div className={`${props.gradation && style.gradation}`} />
     </div>
   )
 }

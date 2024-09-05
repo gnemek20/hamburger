@@ -31,40 +31,45 @@ const header = (props: headerProps) => {
     const headerPos = headerRef.current?.getBoundingClientRect().top;
 
     if (headerPos === 0) {
-      headerRef.current?.setAttribute('style', 'opacity: 0');
+      headerRef.current?.setAttribute('style', 'opacity: 0; touch-action: none; pointer-events: none;');
     }
   }
   
   const showHeader = () => {
-    headerRef.current?.setAttribute('style', 'opacity: 1');
+    headerRef.current?.setAttribute('style', 'opacity: 1; touch-action: auto; pointer-events: auto;');
   }
 
-  const timer = () => {
+  const checkDirection = () => {
     let throttleTimer: NodeJS.Timeout | null;
-    let debounceTimer: NodeJS.Timeout | null;
+    let beforeScrollY: number = 0;
+    let direction: 'up' | 'down';
+
     
     return () => {
-      clearTimeout(debounceTimer as NodeJS.Timeout);
+      beforeScrollY > scrollY ? direction = 'up' : direction = 'down';
 
       if (!throttleTimer) {
         throttleTimer = setTimeout(() => {
           throttleTimer = null;
-          hideHeader();
-        }, 100)
-      }
 
-      debounceTimer = setTimeout(() => {
-        debounceTimer = null;
-        showHeader();
-      }, 800)
+          if (direction === 'up') {
+            showHeader();
+          }
+          else {
+            hideHeader();
+          }
+
+          beforeScrollY = scrollY;
+        }, 100);
+      }
     }
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', timer());
+    window.addEventListener('scroll', checkDirection());
 
-    return() => {
-      window.removeEventListener('scroll', timer());
+    return () => {
+      window.removeEventListener('scroll', checkDirection());
     }
   }, [])
 

@@ -1,0 +1,166 @@
+.zipperStructure {
+  overflow: hidden;
+}
+
+.explanationText {
+  position: absolute;
+  transform: translate(-50%, -175px);
+  top: 50%;
+  left: 50%;
+  width: 250px;
+}
+
+.zipper {
+  width: 100%;
+}
+.zipperLineContainer {
+  cursor: pointer;
+}
+.zipperLine {
+  border: 4px dashed rgba(0, 0, 0, 0.2);
+  transition: all 100ms;
+}
+.zipperLine:nth-child(1) {
+  transform: translateX(-2.5px);
+}
+.zipperLine:nth-child(2) {
+  transform: translateX(2.5px);
+}
+.hoveredZipperLine {
+  border-color: rgba(0, 0, 0, 0.7) !important;
+}
+.zipperSlider {
+  cursor: pointer;
+  filter: invert(0.8);
+  transform: translateX(-50%) translateY(-12.5%);
+  top: 0;
+  left: 22.5%;
+  width: 45px;
+  height: auto;
+  transition: all 100ms;
+}
+.hoveredZipperSlider {
+  filter: invert(0.3);
+}
+
+.analysation {
+  position: absolute;
+  transform: translateX(calc(-50% - 1px)) translateY(calc(-50% - 50% - 20px));
+  top: 50%;
+  left: 77.5%;
+  width: 200px;
+}
+.reversedAnalysation {
+  transform: rotate(180deg) translateX(calc(50% - 1px)) translateY(calc(-50% + 50% - 70px));
+  left: 22.5%;
+}
+.analysationDescription {
+  cursor: pointer;
+  text-align: center;
+  padding: 5px;
+}
+.analysationLine:nth-child(1) {
+  opacity: 0;
+  width: 100%;
+  height: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.analysationLine:nth-child(2) {
+  opacity: 0;
+  transform: translateX(50%);
+  width: 100%;
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.analysationTitle {
+  opacity: 0;
+  color: rgba(0, 0, 0, 0.2);
+  user-select: none;
+  transition: all 100ms;
+}
+.hoveredAnalysationTitle {
+  color: #333;
+}
+.reversedAnalysationTitle {
+  transform: rotate(180deg);
+}
+
+.dialog {
+  z-index: 1;
+  position: absolute;
+  width: 62.5%;
+  height: 80%;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+.zipperDialog {
+  transform: translateY(-65%);
+  top: 0;
+  left: 0;
+}
+.sliderDialog {
+  transform: translateY(65%);
+  bottom: 0;
+  right: 0;
+}
+
+.flickingPanel {
+  display: flex;
+  min-width: 30%;
+}
+.flickingPanel > img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (hover:hover) {
+  .dialog:hover {
+    cursor: grab;
+  }
+  .dialog:active {
+    cursor: grabbing;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .explanationText {
+    transform: translate(-50%, -145px);
+  }
+
+  .zipperLine {
+    border-width: 3px;
+  }
+  .zipperSlider {
+    width: 30px;
+  }
+
+  .analysation {
+    width: 150px !important;
+  }
+  .reversedAnalysation {
+    transform: rotate(180deg) translateX(calc(50% - 1px)) translateY(calc(-50% + 50% - 50px));
+  }
+
+  .dialog {
+    width: 50%;
+    height: 175%;
+  }
+  .zipperDialog {
+    transform: translateY(-50%);
+    top: 50%;
+  }
+  .sliderDialog {
+    transform: translateY(50%);
+    bottom: 50%;
+  }
+
+  .flickingPanel {
+    display: flex;
+    min-height: 65%;
+  }
+}
