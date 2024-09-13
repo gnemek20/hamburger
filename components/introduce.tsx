@@ -20,6 +20,7 @@ const introduce = (props: introduceProps) => {
   return (
     <Section className={`flex justifyCenter`} padding='150px 20px 200px'>
       <Background image={backgroundImage} gradation />
+      {/* <Background image={backgroundImage} /> */}
       <div ref={props.elementRef} className={`flex limitWidth maxWidth alignCenter mobileAlignStart mobileFlexColumn`}>
         <div className={`flex flexColumn ${style.content}`}>
           <h1 className={`title opacityNone colorWhite ${props.startAnimation && animation.titleSlideIn}`}>대양 아이엔지란?</h1>

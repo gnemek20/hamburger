@@ -1,5 +1,5 @@
 import style from "@/styles/main.module.css"
-import { Detail, Footer, Header, Introduce, Landing, Map, Merit, Request, ZipperStructure } from '@/components/index';
+import { Detail, Footer, Header, Introduce, Landing, Map, Merit, Request, Talk, ZipperStructure } from '@/components/index';
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
@@ -8,6 +8,7 @@ const main = () => {
   const zipperStructureRef = useRef<HTMLDivElement>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const meritRef = useRef<HTMLDivElement>(null);
+  const talkRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<HTMLDivElement>(null);
 
@@ -18,17 +19,19 @@ const main = () => {
 
   const components: Array<(props: componentsProps) => JSX.Element> = [
     Introduce,
-    ZipperStructure,
     Detail,
-    Merit,
+    ZipperStructure,
+    // Merit,
+    Talk,
     Map,
     Request
   ];
   const refs: Array<RefObject<HTMLDivElement>> = [
     introduceRef,
-    zipperStructureRef,
     detailRef,
-    meritRef,
+    zipperStructureRef,
+    // meritRef,
+    talkRef,
     mapRef,
     requestRef
   ];

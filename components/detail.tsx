@@ -3,6 +3,7 @@ import animation from '@/styles/components/detail/animation.module.css'
 import Flicking, { FlickingError } from '@egjs/react-flicking'
 import Image from 'next/image'
 import { MouseEvent, RefObject, useEffect, useRef, useState } from 'react'
+import { Banner, Offset } from '.'
 
 interface detailProps {
   elementRef: RefObject<HTMLDivElement>
@@ -25,6 +26,11 @@ const shoeImage = {
 const zipperImage = {
   src: require('@/public/images/zipper.jpg'),
   alt: 'clotheButtonImage'
+}
+
+const bannerImage = {
+  src: require('@/public/images/truck.jpg'),
+  alt: 'bannerImage'
 }
 
 const detail = (props: detailProps) => {
@@ -130,31 +136,34 @@ const detail = (props: detailProps) => {
   }
 
   return (
-    <div className={`flex justifyCenter maxWidth ${style.detail}`}>
-      <Flicking onMoveStart={() => startMoveAnimation()} onMoveEnd={() => finishMoveAnimation()} onChanged={() => recordFlickingStatus()} ref={flickingRef}>
-        {
-          panelList.map((panel, index) => (
-            <div className={`flex justifyCenter ${style.flickingPanel}`} key={index}>
-              <Image className={`${style.flickingImage} ${isMovingPanel ? animation.flickingImageLightly : animation.flickingImageDarkly}`} src={panel.image.src} alt={panel.image.alt} onClick={(event) => touchToMovePanel(event)} />
-            </div>
-          ))
-        }
-      </Flicking>
-      <Image className={`${style.arrowIcon} ${style.leftArrow} ${panelIndex === 0 && style.disabledArrowIcon}`} src={arrowIcon.src} alt={arrowIcon.alt} onClick={() => movePanel('left')} />
-      <Image className={`${style.arrowIcon} ${style.rightArrow} ${panelIndex === flickingPanelLength && style.disabledArrowIcon}`} src={arrowIcon.src} alt={arrowIcon.alt} onClick={() => movePanel('right')} />
-      <div className={`${style.simplePanelBackground}`}>
-        {
-          panelList.map((panel, index) => (
-            <div className={`${style.simplePanelContainer}`} onClick={() => changePanelIndex(index)} key={index}>
-              <div className={`${style.simplePanel} ${index === panelIndex && style.activedSimplePanel}`} />
-            </div>
-          ))
-        }
+    <>
+      <Banner image={bannerImage} title='생산중인 상품' subTitle='product of production' />
+      <div className={`flex justifyCenter maxWidth ${style.detail}`}>
+        <Flicking onMoveStart={() => startMoveAnimation()} onMoveEnd={() => finishMoveAnimation()} onChanged={() => recordFlickingStatus()} ref={flickingRef}>
+          {
+            panelList.map((panel, index) => (
+              <div className={`flex justifyCenter ${style.flickingPanel}`} key={index}>
+                <Image className={`${style.flickingImage} ${isMovingPanel ? animation.flickingImageLightly : animation.flickingImageDarkly}`} src={panel.image.src} alt={panel.image.alt} onClick={(event) => touchToMovePanel(event)} />
+              </div>
+            ))
+          }
+        </Flicking>
+        <Image className={`${style.arrowIcon} ${style.leftArrow} ${panelIndex === 0 && style.disabledArrowIcon}`} src={arrowIcon.src} alt={arrowIcon.alt} onClick={() => movePanel('left')} />
+        <Image className={`${style.arrowIcon} ${style.rightArrow} ${panelIndex === flickingPanelLength && style.disabledArrowIcon}`} src={arrowIcon.src} alt={arrowIcon.alt} onClick={() => movePanel('right')} />
+        <div className={`${style.simplePanelBackground}`}>
+          {
+            panelList.map((panel, index) => (
+              <div className={`${style.simplePanelContainer}`} onClick={() => changePanelIndex(index)} key={index}>
+                <div className={`${style.simplePanel} ${index === panelIndex && style.activedSimplePanel}`} />
+              </div>
+            ))
+          }
+        </div>
+        <div className={`flex flexColumn textCenter ${style.introduction}`} ref={props.elementRef}>
+          { introduction(panelList[panelIndex].title, panelList[panelIndex].text) }
+        </div>
       </div>
-      <div className={`flex flexColumn textCenter ${style.introduction}`} ref={props.elementRef}>
-        { introduction(panelList[panelIndex].title, panelList[panelIndex].text) }
-      </div>
-    </div>
+    </>
   )
 }
 

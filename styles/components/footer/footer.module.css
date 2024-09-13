@@ -11,7 +11,7 @@
   gap: 5px;
 }
 .textContainer:nth-last-child(1) {
-  text-align: end;
+  text-align: flex-end;
 }
 
 .information > div {
@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 767px) {
   .textContainer:nth-last-child(1) {
-    text-align: start;
+    text-align: flex-start;
   }
   .information {
     gap: 20px;

@@ -16,7 +16,14 @@ const background = (props: backgroundProps) => {
   return (
     <div className={`${style.background}`}>
       <Image src={background.src} alt={background.alt} />
-      <div className={`${props.gradation && style.gradation}`} />
+      {
+        props.gradation && (
+          <div className={`${style.gradation}`}>
+            <div />
+            <div />
+          </div>
+        )
+      }
     </div>
   )
 }

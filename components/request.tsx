@@ -193,136 +193,142 @@ const request = (props: requestProps) => {
   }, [])
 
   return (
-    <Section className={`flex justifyCenter`} gray>
-      <div className={`flex flexColumn alignCenter limitWidth maxWidth`} ref={props.elementRef}>
-        <div className={`flex flexColumn textCenter ${style.content}`}>
-          <h1 className={`title`}>발주 문의</h1>
-          <div>
-            <p className={`text`}>최대한 빨리 확인하여 기재해주신 연락처로 연락드리겠습니다.</p>
-          </div>
-        </div>
-        <div className={`flex flexColumn maxWidth alignCenter ${style.methodContainer}`}>
-          <div className={`flex spaceBetween maxWidth textCenter ${style.methods}`}>
-            <div className={`flex flexColumn alignCenter maxWidth`}>
-              <h1 className={`text ${style.method} ${selectedMethod === 'realTime' && style.selectedMethod}`} onClick={() => changeMethod('realTime')}>실시간 문의</h1>
-            </div>
-            <div className={`flex flexColumn alignCenter maxWidth`}>
-              <h1 className={`text ${style.method} ${selectedMethod === 'email' && style.selectedMethod}`} onClick={() => changeMethod('email')}>이메일 문의</h1>
+    <>
+      <Section className={`flex justifyCenter`} gray>
+        <div className={`flex flexColumn alignCenter limitWidth maxWidth`} ref={props.elementRef}>
+          <div className={`flex flexColumn textCenter ${style.content}`}>
+            <h1 className={`title`}>발주 문의</h1>
+            <div>
+              <p className={`text`}>최대한 빨리 확인하여 기재해주신 연락처로 연락드리겠습니다.</p>
             </div>
           </div>
-          <div className={`maxWidth ${style.divideLine}`} />
-        </div>
-        {
-          selectedMethod === 'realTime' && (
-            <div className={`flex flexColumn maxWidth ${style.contact}`}>
-              <div>
-                <p className={`mobileText textCenter`}>아이콘을 클릭해주세요.</p>
+          <div className={`flex flexColumn maxWidth alignCenter ${style.methodContainer}`}>
+            <div className={`flex spaceBetween maxWidth textCenter ${style.methods}`}>
+              <div className={`flex flexColumn alignCenter maxWidth`}>
+                <h1 className={`text ${style.method} ${selectedMethod === 'realTime' && style.selectedMethod}`} onClick={() => changeMethod('realTime')}>실시간 문의</h1>
               </div>
-              <div className={`flex alignCenter ${style.contactMethod}`}>
-                <div className={`${style.contactImageContainer}`}>
-                  <Image className={`${style.contactImage}`} src={kakaoImage.src} alt={kakaoImage.alt} />
-                </div>
-                <div className={`flex flexColumn spaceBetween ${style.contactMethodText}`}>
-                  <p className={`text`}>카카오 문의</p>
-                  <p className={`mobileText`}>문의 답변 시간 00:00 ~ 24:00</p>
-                </div>
-              </div>
-              <div className={`flex alignCenter ${style.contactMethod}`}>
-                <div className={`${style.contactImageContainer}`}>
-                  <Image className={`${style.contactImage}`} src={telephoneImage.src} alt={telephoneImage.alt} />
-                </div>
-                <div className={`flex flexColumn spaceBetween ${style.contactMethodText}`}>
-                  <p className={`text`}>전화 문의</p>
-                  <p className={`mobileText`}>문의 답변 시간 00:00 ~ 24:00</p>
-                </div>
+              <div className={`flex flexColumn alignCenter maxWidth`}>
+                <h1 className={`text ${style.method} ${selectedMethod === 'email' && style.selectedMethod}`} onClick={() => changeMethod('email')}>이메일 문의</h1>
               </div>
             </div>
-          )
-        }
-        {
-          selectedMethod === 'email' && (
-            <div className={`flex flexColumn maxWidth ${style.form}`}>
-              <div>
-                <AdditionalText require>이름</AdditionalText>
-                <input className={`${style.formTextInput}`} type="text" spellCheck={false} onChange={(event) => setTimeout(() => inputText('name', event.target.value))} placeholder={placeholderName} />
+            <div className={`maxWidth ${style.divideLine}`} />
+          </div>
+          {
+            selectedMethod === 'realTime' && (
+              <div className={`flex flexColumn maxWidth ${style.contact}`}>
+                <div>
+                  <p className={`mobileText textCenter`}>아이콘을 클릭해주세요.</p>
+                </div>
+                <div className={`flex alignCenter ${style.contactMethod}`}>
+                  <div className={`${style.contactImageContainer}`}>
+                    <Image className={`${style.contactImage}`} src={kakaoImage.src} alt={kakaoImage.alt} />
+                  </div>
+                  <div className={`flex flexColumn spaceBetween ${style.contactMethodText}`}>
+                    <p className={`text`}>카카오 문의</p>
+                    <p className={`mobileText`}>문의 답변 시간 00:00 ~ 24:00</p>
+                  </div>
+                </div>
+                <div className={`flex alignCenter ${style.contactMethod}`}>
+                  <div className={`${style.contactImageContainer}`}>
+                    <Image className={`${style.contactImage}`} src={telephoneImage.src} alt={telephoneImage.alt} />
+                  </div>
+                  <div className={`flex flexColumn spaceBetween ${style.contactMethodText}`}>
+                    <p className={`text`}>전화 문의</p>
+                    <p className={`mobileText`}>문의 답변 시간 00:00 ~ 24:00</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <AdditionalText require>이메일</AdditionalText>
-                <input className={`${style.formTextInput}`} type="text" spellCheck={false} inputMode={`${isMobile ? 'email' : 'text'}`} onChange={(event) => setTimeout(() => inputText('contact', event.target.value))} placeholder={placeholderEmail} />
-              </div>
-              <div>
-                <AdditionalText require>내용</AdditionalText>
-                <textarea className={`${style.formTextarea}`} rows={10} spellCheck={false} onChange={(event) => setTimeout(() => inputText('detail', event.target.value))} placeholder={placeholderContent} />
-              </div>
-              <div>
-                <AdditionalText>첨부파일</AdditionalText>
-                <input className={`${style.formFileInput}`} type="file" id="file" onChange={(event) => uploadFiles(event)} multiple />
-                <label className={`pointer textCenter ${style.formLabel}`} htmlFor="file">파일 추가</label>
-                {
-                  files.length > 0 && (
-                    <div className={`flex flexColumn ${style.uploadedFiles}`}>
-                      {
-                        files.map((file, index) => (
-                          <div className={`flex ${style.uploadedFile}`} key={index} onClick={() => deleteFile(index)}>
-                            <p className={`mobileText`}>{ file.name }</p>
-                            <Image className={`${style.fileDeleteIcon}`} src={fileDeleteIcon.src} alt={fileDeleteIcon.alt} />
-                          </div>
-                        ))
-                      }
-                    </div>
-                  )
-                }
-              </div>
-              <div>
-                <button className={`pointer ${style.formSubmit} ${disabledSubmit && style.disabledFormSubmit}`} onClick={activeDialog}>제출</button>
-                <Dialog
-                  className={`flex flexColumn alignCenter textCenter maxWidth ${completedPost ? style.postCompleteDialog : style.finalCheckDialog}`}
-                  active={showDialog}
-                  loading={dialogLoading}
-                >
+            )
+          }
+          {
+            selectedMethod === 'email' && (
+              <div className={`flex flexColumn maxWidth ${style.form}`}>
+                <div>
+                  <AdditionalText require>이름</AdditionalText>
+                  <input className={`${style.formTextInput}`} type="text" spellCheck={false} onChange={(event) => setTimeout(() => inputText('name', event.target.value))} placeholder={placeholderName} />
+                </div>
+                <div>
+                  <AdditionalText require>이메일</AdditionalText>
+                  <input className={`${style.formTextInput}`} type="text" spellCheck={false} inputMode={`${isMobile ? 'email' : 'text'}`} onChange={(event) => setTimeout(() => inputText('contact', event.target.value))} placeholder={placeholderEmail} />
+                </div>
+                <div>
+                  <AdditionalText require>내용</AdditionalText>
+                  <textarea className={`${style.formTextarea}`} rows={10} spellCheck={false} onChange={(event) => setTimeout(() => inputText('detail', event.target.value))} placeholder={placeholderContent} />
+                </div>
+                <div>
+                  <AdditionalText>첨부파일</AdditionalText>
+                  <input className={`${style.formFileInput}`} type="file" id="file" onChange={(event) => uploadFiles(event)} multiple />
+                  <label className={`pointer textCenter ${style.formLabel}`} htmlFor="file">파일 추가</label>
                   {
-                    completedPost ? (
-                      <>
+                    files.length > 0 && (
+                      <div className={`flex flexColumn ${style.uploadedFiles}`}>
                         {
-                          postedRequest ? (
-                            <>
-                              <p className={`title`}>등록되었습니다.</p>
-                              <p className={`text`}>영업일 기준 이틀 내로<br />기재해주신 연락처로 연락드리겠습니다.</p>
-                            </>
-                          ) : (
-                            <>
-                              <p className={`title`}>등록에 실패했습니다.</p>
-                              <p className={`text`}>잠시 후 다시 시도해주세요.</p>
-                            </>
-                          )
+                          files.map((file, index) => (
+                            <div className={`flex ${style.uploadedFile}`} key={index} onClick={() => deleteFile(index)}>
+                              <p className={`mobileText`}>{ file.name }</p>
+                              <Image className={`${style.fileDeleteIcon}`} src={fileDeleteIcon.src} alt={fileDeleteIcon.alt} />
+                            </div>
+                          ))
                         }
-                        <div className={`flex justifyCenter maxWidth ${style.dialogButtonContainer} ${style.dialogCloseButtonContainer}`}>
-                          <button className={`mobileText pointer`} onClick={closeDialog}>닫기</button>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div>
-                          { alreadyPosted ?
-                            <p className={`pcText`}>등록된 주문이 있습니다.<br />한 번 더 제출하시겠습니까?</p>
-                            :
-                            <p className={`pcText`}>제출하시겠습니까?</p>
-                          }
-                        </div>
-                        <div className={`flex justifyCenter maxWidth ${style.dialogButtonContainer} ${style.dialogChoiceButtonContainer}`}>
-                          <button className={`mobileText colorWhite pointer`} onClick={postRequest}>네</button>
-                          <button className={`mobileText pointer`} onClick={() => setShowDialog(false)}>아니오</button>
-                        </div>
-                      </>
+                      </div>
                     )
                   }
-                </Dialog>
+                </div>
+                <div>
+                  <button className={`pointer ${style.formSubmit} ${disabledSubmit && style.disabledFormSubmit}`} onClick={activeDialog}>제출</button>
+                  <Dialog
+                    className={`flex flexColumn alignCenter textCenter maxWidth ${completedPost ? style.postCompleteDialog : style.finalCheckDialog}`}
+                    active={showDialog}
+                    loading={dialogLoading}
+                  >
+                    {
+                      completedPost ? (
+                        <>
+                          {
+                            postedRequest ? (
+                              <>
+                                <p className={`title`}>등록되었습니다.</p>
+                                <p className={`text`}>영업일 기준 이틀 내로<br />기재해주신 연락처로 연락드리겠습니다.</p>
+                              </>
+                            ) : (
+                              <>
+                                <p className={`title`}>등록에 실패했습니다.</p>
+                                <p className={`text`}>잠시 후 다시 시도해주세요.</p>
+                              </>
+                            )
+                          }
+                          <div className={`flex justifyCenter maxWidth ${style.dialogButtonContainer} ${style.dialogCloseButtonContainer}`}>
+                            <button className={`mobileText pointer`} onClick={closeDialog}>닫기</button>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div>
+                            { alreadyPosted ?
+                              <p className={`pcText`}>등록된 주문이 있습니다.<br />한 번 더 제출하시겠습니까?</p>
+                              :
+                              <p className={`pcText`}>제출하시겠습니까?</p>
+                            }
+                          </div>
+                          <div className={`flex justifyCenter maxWidth ${style.dialogButtonContainer} ${style.dialogChoiceButtonContainer}`}>
+                            <button className={`mobileText colorWhite pointer`} onClick={postRequest}>네</button>
+                            <button className={`mobileText pointer`} onClick={() => setShowDialog(false)}>아니오</button>
+                          </div>
+                        </>
+                      )
+                    }
+                  </Dialog>
+                </div>
               </div>
-            </div>
-          )
-        }
+            )
+          }
+        </div>
+      </Section>
+      <div className={`${style.finalText}`}>
+        <p className={`mobileText`}>패션에 새로운 날개를 달다</p>
+        <p className={`mobileText`}>주식회사 대양아이엔지 ⓒ</p>
       </div>
-    </Section>
+    </>
   )
 }
 

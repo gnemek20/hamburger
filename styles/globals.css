@@ -43,13 +43,13 @@ a {
 }
 
 .textStart {
-  text-align: start;
+  text-align: flex-start;
 }
 .textCenter {
   text-align: center;
 }
 .textEnd {
-  text-align: end;
+  text-align: flex-end;
 }
 
 .spaceBetween {
@@ -57,22 +57,22 @@ a {
 }
 
 .justifyStart {
-  justify-content: start;
+  justify-content: flex-start;
 }
 .justifyCenter {
   justify-content: center;
 }
 .justifyEnd {
-  justify-content: end;
+  justify-content: flex-end;
 }
 .alignStart {
-  align-items: start;
+  align-items: flex-start;
 }
 .alignCenter {
   align-items: center;
 }
 .alignEnd {
-  align-items: end;
+  align-items: flex-end;
 }
 .topCenter {
   top: 50%;
@@ -177,11 +177,11 @@ a {
   }
 
   .mobileAlignStart {
-    align-items: start;
+    align-items: flex-start;
   }
 
   .mobileTextStart {
-    text-align: start;
+    text-align: flex-start;
   }
 
   .title {
