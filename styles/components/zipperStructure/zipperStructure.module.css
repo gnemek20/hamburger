@@ -60,7 +60,8 @@
     grid-template-columns: 1fr;
   }
   .list > div {
-    aspect-ratio: 1 / 1.15;
+    /* aspect-ratio: 1 / 1.25; */
+    aspect-ratio: 0;
   }
   .list > div:nth-child(2) {
     transform: rotate(0);
