@@ -1,8 +1,13 @@
 import style from '@/styles/components/map/map.module.css'
 import animation from '@/styles/components/map/animation.module.css'
-import { Section } from '.'
+import { Banner, Offset, Section } from '.'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+
+const bannerImage = {
+  src: require('@/public/images/explore.jpg'),
+  alt: 'bannerImage'
+}
 
 const copyIcon = {
   src: require('@/public/icons/copy.svg'),
@@ -83,46 +88,52 @@ const map = () => {
   }, [])
 
   return (
-    <Section className={`flex justifyCenter`}>
-      <div className={`relative flex limitWidth maxWidth`}>
-        <div
-          className={`
-            maxWidth
-            ${style.map}
-          `}
-          id='map'
-          onClick={() => checkClick()}
-        />
-        <div
-          ref={mapCoverRef}
-          className={`
-            absolute
-            maxWidth
-            maxHeight
-            flex
-            justifyCenter
-            alignCenter
-            ${style.mapCover}
-            ${!isToggledCover ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}
-          `}
-          onClick={() => checkClick()}
-        >
-          <h1 className={`title textCenter preventEvent colorWhite`}>더블클릭으로<br/>잠금을 해제합니다.</h1>
-        </div>
-        <div className={`absolute flex mobileFlexColumn ${style.optionContainer}`}>
-          <div className={`flex alignCenter ${style.information}`} onClick={() => copyAddress()}>
-            <p className={`text preventEvent`}>{ address }</p>
-            {
-              isCopied ? (
-                <Image className={`preventEvent ${style.copyOptionIcon}`} src={checkIcon.src} alt={checkIcon.alt} />
-              ) : (
-                <Image className={`preventEvent ${style.copyOptionIcon}`} src={copyIcon.src} alt={copyIcon.alt} />
-              )
-            }
+    <>
+      <Offset size={100} />
+      <Banner image={bannerImage} title='찾아오는 길' subTitle='Way to Come' />
+      {/* <Offset size={45} /> */}
+      <div className={`flex justifyCenter`}>
+        {/* <div className={`relative flex limitWidth maxWidth`}> */}
+        <div className={`relative flex maxWidth`}>
+          <div
+            className={`
+              maxWidth
+              ${style.map}
+            `}
+            id='map'
+            onClick={() => checkClick()}
+          />
+          <div
+            ref={mapCoverRef}
+            className={`
+              absolute
+              maxWidth
+              maxHeight
+              flex
+              justifyCenter
+              alignCenter
+              ${style.mapCover}
+              ${!isToggledCover ? animation.mapCoverFadeOut : animation.mapCoverFadeIn}
+            `}
+            onClick={() => checkClick()}
+          >
+            <h1 className={`title textCenter preventEvent colorWhite`}>더블클릭으로<br/>잠금을 해제합니다.</h1>
+          </div>
+          <div className={`absolute flex mobileFlexColumn ${style.optionContainer}`}>
+            <div className={`flex alignCenter ${style.information}`} onClick={() => copyAddress()}>
+              <p className={`text preventEvent`}>{ address }</p>
+              {
+                isCopied ? (
+                  <Image className={`preventEvent ${style.copyOptionIcon}`} src={checkIcon.src} alt={checkIcon.alt} />
+                ) : (
+                  <Image className={`preventEvent ${style.copyOptionIcon}`} src={copyIcon.src} alt={copyIcon.alt} />
+                )
+              }
+            </div>
           </div>
         </div>
       </div>
-    </Section>
+    </>
   )
 }
 

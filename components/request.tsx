@@ -1,6 +1,6 @@
 import style from '@/styles/components/request/request.module.css'
 import animation from '@/styles/components/request/animation.module.css'
-import { AdditionalText, Dialog, Section } from '.'
+import { AdditionalText, Dialog, Offset, Section } from '.'
 import { ChangeEvent, RefObject, useEffect, useState } from 'react'
 import { File } from 'buffer'
 import Image from 'next/image'
@@ -194,6 +194,7 @@ const request = (props: requestProps) => {
 
   return (
     <>
+      {/* <Offset size={100} /> */}
       <Section className={`flex justifyCenter`} gray>
         <div className={`flex flexColumn alignCenter limitWidth maxWidth`} ref={props.elementRef}>
           <div className={`flex flexColumn textCenter ${style.content}`}>

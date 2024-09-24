@@ -22,7 +22,7 @@ const main = () => {
     Detail,
     ZipperStructure,
     // Merit,
-    Talk,
+    // Talk,
     Map,
     Request
   ];
@@ -31,7 +31,7 @@ const main = () => {
     detailRef,
     zipperStructureRef,
     // meritRef,
-    talkRef,
+    // talkRef,
     mapRef,
     requestRef
   ];

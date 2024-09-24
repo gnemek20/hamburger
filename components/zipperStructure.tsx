@@ -53,9 +53,9 @@ const zipperStructure = ({elementRef, startAnimation}: zipperStructureProps) => 
 
   return (
     <>
-      <Offset size={50} />
+      <Offset size={75} />
       <Banner image={bannerImage} title='지퍼의 다양성' subTitle='variety of zipper' />
-      <Offset size={25} />
+      <Offset size={45} />
       <div ref={elementRef} className={`${style.zipperStructure}`}>
         <div className={`limitWidth ${style.list}`}>
           <div>
