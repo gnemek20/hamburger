@@ -27,51 +27,51 @@ const header = (props: headerProps) => {
     router.reload();
   }
 
-  const hideHeader = () => {
-    const headerPos = headerRef.current?.getBoundingClientRect().top;
+  // const hideHeader = () => {
+  //   const headerPos = headerRef.current?.getBoundingClientRect().top;
 
-    if (headerPos === 0) {
-      headerRef.current?.setAttribute('style', 'opacity: 0; touch-action: none; pointer-events: none;');
-    }
-  }
+  //   if (headerPos === 0) {
+  //     headerRef.current?.setAttribute('style', 'opacity: 0; touch-action: none; pointer-events: none;');
+  //   }
+  // }
   
-  const showHeader = () => {
-    headerRef.current?.setAttribute('style', 'opacity: 1; touch-action: auto; pointer-events: auto;');
-  }
+  // const showHeader = () => {
+  //   headerRef.current?.setAttribute('style', 'opacity: 1; touch-action: auto; pointer-events: auto;');
+  // }
 
-  const checkDirection = () => {
-    let throttleTimer: NodeJS.Timeout | null;
-    let beforeScrollY: number = 0;
-    let direction: 'up' | 'down';
+  // const checkDirection = () => {
+  //   let throttleTimer: NodeJS.Timeout | null;
+  //   let beforeScrollY: number = 0;
+  //   let direction: 'up' | 'down';
 
     
-    return () => {
-      beforeScrollY > scrollY ? direction = 'up' : direction = 'down';
+  //   return () => {
+  //     beforeScrollY > scrollY ? direction = 'up' : direction = 'down';
 
-      if (!throttleTimer) {
-        throttleTimer = setTimeout(() => {
-          throttleTimer = null;
+  //     if (!throttleTimer) {
+  //       throttleTimer = setTimeout(() => {
+  //         throttleTimer = null;
 
-          if (direction === 'up') {
-            showHeader();
-          }
-          else {
-            hideHeader();
-          }
+  //         if (direction === 'up') {
+  //           showHeader();
+  //         }
+  //         else {
+  //           hideHeader();
+  //         }
 
-          beforeScrollY = scrollY;
-        }, 100);
-      }
-    }
-  }
+  //         beforeScrollY = scrollY;
+  //       }, 100);
+  //     }
+  //   }
+  // }
 
-  useEffect(() => {
-    window.addEventListener('scroll', checkDirection());
+  // useEffect(() => {
+  //   window.addEventListener('scroll', checkDirection());
 
-    return () => {
-      window.removeEventListener('scroll', checkDirection());
-    }
-  }, [])
+  //   return () => {
+  //     window.removeEventListener('scroll', checkDirection());
+  //   }
+  // }, [])
 
   return (
     <div ref={headerRef} className={`flex justifyCenter ${style.header}`}>

@@ -92,7 +92,11 @@ const map = () => {
       <Offset size={100} />
       <Banner image={bannerImage} title='찾아오는 길' subTitle='Way to Come' />
       {/* <Offset size={45} /> */}
-      <div className={`flex justifyCenter`}>
+      <div className={`flex justifyCenter ${style.mapBackground}`}>
+        <div className={`${style.gradation}`}>
+          <div />
+          <div />
+        </div>
         {/* <div className={`relative flex limitWidth maxWidth`}> */}
         <div className={`relative flex maxWidth`}>
           <div

@@ -139,6 +139,10 @@ const detail = (props: detailProps) => {
     <>
       <Banner image={bannerImage} title='생산중인 상품' subTitle='product of production' />
       <div className={`flex justifyCenter maxWidth ${style.detail}`}>
+        <div className={`${style.gradation}`}>
+          <div />
+          <div />
+        </div>
         <Flicking onMoveStart={() => startMoveAnimation()} onMoveEnd={() => finishMoveAnimation()} onChanged={() => recordFlickingStatus()} ref={flickingRef}>
           {
             panelList.map((panel, index) => (
