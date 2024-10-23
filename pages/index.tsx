@@ -8,7 +8,6 @@ const main = () => {
   const zipperStructureRef = useRef<HTMLDivElement>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const meritRef = useRef<HTMLDivElement>(null);
-  const talkRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<HTMLDivElement>(null);
 
@@ -21,8 +20,7 @@ const main = () => {
     Introduce,
     Detail,
     ZipperStructure,
-    // Merit,
-    // Talk,
+    Merit,
     Map,
     Request
   ];
@@ -30,7 +28,7 @@ const main = () => {
     introduceRef,
     detailRef,
     zipperStructureRef,
-    // meritRef,
+    meritRef,
     // talkRef,
     mapRef,
     requestRef

@@ -1,15 +1,21 @@
 import style from '@/styles/components/zipperStructure/zipperStructure.module.css'
 import { Banner, Offset } from '.'
 import { RefObject, useEffect, useState } from 'react'
+import Image from 'next/image'
 
 const bannerImage = {
   src: require('@/public/images/gear.jpg'),
   alt: 'bannerImage'
 }
 
+interface cardAttribute {
+  name: string
+  image: typeof bannerImage
+}
+
 interface stackAttribute {
   observed: boolean
-  cardArray: Array<string>
+  cardArray: Array<cardAttribute>
 }
 
 interface zipperStructureProps {
@@ -31,16 +37,19 @@ const Stack = ({cardArray, observed}: stackAttribute) => {
 
   useEffect(() => {
     if (observed) {
-      setSelectedCard(cardArray[0]);
+      setSelectedCard(cardArray[0].name);
     }
   }, [cardArray, observed])
 
   return (
     <div className={`${style.stack}`}>
       {
-        cardArray.map((item, index) => (
-          <div className={`${style.card} ${compareToSelectedCard(item) && style.selected}`} onClick={() => changeSelectedCard(item)} key={index}>
-            <p className={`${compareToSelectedCard(item) ? 'text' : 'mobileText'}`}>{ item }</p>
+        cardArray.map((card, index) => (
+          <div className={`${style.card} ${compareToSelectedCard(card.name) && style.selected}`} onClick={() => changeSelectedCard(card.name)} key={index}>
+            <div className={`${style.cardImage}`}>
+              <Image src={card.image.src} alt={card.image.alt} />
+            </div>
+            <p className={`${compareToSelectedCard(card.name) ? 'text' : 'mobileText'}`}>{ card.name }</p>
           </div>
         ))
       }
@@ -49,7 +58,71 @@ const Stack = ({cardArray, observed}: stackAttribute) => {
 }
 
 const zipperStructure = ({elementRef, startAnimation}: zipperStructureProps) => {
-  const array = new Array('Sample1', 'Sample2', 'Sample3', 'Sample4');
+  const metalZipperImage = {
+    src: require('@/public/images/metalZipper.jpg'),
+    alt: 'metalZipper'
+  }
+  const plasticZipperImage = {
+    src: require('@/public/images/plasticZipper.jpg'),
+    alt: 'plasticZipper'
+  }
+
+  const metalArray: Array<cardAttribute> = [
+    {
+      name: '메탈',
+      image: metalZipperImage
+    },
+    {
+      name: 'metal',
+      image: plasticZipperImage
+    },
+    {
+      name: 'Sample3',
+      image: plasticZipperImage
+    },
+    {
+      name: 'Sample4',
+      image: plasticZipperImage
+    }
+  ]
+
+  const plasticArray: Array<cardAttribute> = [
+    {
+      name: '플라스틱',
+      image: metalZipperImage
+    },
+    {
+      name: 'plastic',
+      image: plasticZipperImage
+    },
+    {
+      name: 'Sample3',
+      image: plasticZipperImage
+    },
+    {
+      name: 'Sample4',
+      image: plasticZipperImage
+    }
+  ]
+
+  const coilArray: Array<cardAttribute> = [
+    {
+      name: '코일',
+      image: metalZipperImage
+    },
+    {
+      name: 'coil',
+      image: plasticZipperImage
+    },
+    {
+      name: 'Sample3',
+      image: plasticZipperImage
+    },
+    {
+      name: 'Sample4',
+      image: plasticZipperImage
+    }
+  ]
 
   return (
     <>
@@ -59,13 +132,13 @@ const zipperStructure = ({elementRef, startAnimation}: zipperStructureProps) => 
       <div ref={elementRef} className={`${style.zipperStructure}`}>
         <div className={`limitWidth ${style.list}`}>
           <div>
-            <Stack observed={startAnimation} cardArray={array} />
+            <Stack observed={startAnimation} cardArray={metalArray} />
           </div>
           <div>
-            <Stack observed={startAnimation} cardArray={array} />
+            <Stack observed={startAnimation} cardArray={plasticArray} />
           </div>
           <div>
-            <Stack observed={startAnimation} cardArray={array} />
+            <Stack observed={startAnimation} cardArray={coilArray} />
           </div>
         </div>
       </div>
