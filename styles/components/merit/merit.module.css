@@ -1,0 +1,36 @@
+.meritList {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 300px;
+  background-color: rgba(230, 230, 230, 0.5);
+}
+.merit {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 25px;
+  gap: 10px;
+}
+
+.meritIcon {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.meritIcon > img {
+  width: 100%;
+  height: 100%;
+  filter: invert(0.7);
+}
+
+@media screen and (max-width: 768px) {
+  .meritList {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 250px;
+  }
+}
