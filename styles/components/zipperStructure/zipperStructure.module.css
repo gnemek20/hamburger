@@ -12,7 +12,8 @@
 }
 
 .list > div {
-  aspect-ratio: 1 / 1.5;
+  width: 100%;
+  /* aspect-ratio: 1 / 1.5; */
   display: flex;
   align-items: flex-start;
 }
