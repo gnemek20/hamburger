@@ -31,7 +31,6 @@
 }
 
 .card {
-  /* position: relative; */
   cursor: pointer;
   background-color: rgba(115, 78, 62, 0.7);
   display: flex;

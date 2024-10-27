@@ -50,6 +50,7 @@ const Stack = ({cardArray, observed}: stackAttribute) => {
               <Image src={card.image.src} alt={card.image.alt} />
             </div>
             <p className={`${compareToSelectedCard(card.name) ? 'text' : 'mobileText'}`}>{ card.name }</p> */}
+            <p>test</p>
           </div>
         ))
       }
