@@ -47,7 +47,7 @@ const Stack = ({cardArray, observed}: stackAttribute) => {
         cardArray.map((card, index) => (
           <div className={`${style.card} ${compareToSelectedCard(card.name) && style.selected}`} onClick={() => changeSelectedCard(card.name)} key={index}>
             <div className={`${style.cardImage}`}>
-              <Image src={card.image.src} alt={card.image.alt} />
+              {/* <Image src={card.image.src} alt={card.image.alt} /> */}
             </div>
             <p className={`${compareToSelectedCard(card.name) ? 'text' : 'mobileText'}`}>{ card.name }</p>
           </div>
