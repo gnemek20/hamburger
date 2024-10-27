@@ -12,8 +12,7 @@
 }
 
 .list > div {
-  width: 100%;
-  /* aspect-ratio: 1 / 1.5; */
+  aspect-ratio: 1 / 1.5;
   display: flex;
   align-items: flex-start;
 }
@@ -37,7 +36,8 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  aspect-ratio: 1 / 0.01;
+  /* aspect-ratio: 1 / 0.01; */
+  aspect-ratio: 1 / 1;
   padding: 5px;
   transition: all 750ms;
 }
@@ -87,7 +87,6 @@
     grid-template-columns: 1fr;
   }
   .list > div {
-    /* aspect-ratio: 1 / 1.25; */
     aspect-ratio: 0;
   }
   .list > div:nth-child(2) {
