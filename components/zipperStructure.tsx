@@ -46,9 +46,9 @@ const Stack = ({cardArray, observed}: stackAttribute) => {
       {
         cardArray.map((card, index) => (
           <div className={`${style.card} ${compareToSelectedCard(card.name) && style.selected}`} onClick={() => changeSelectedCard(card.name)} key={index}>
-            {/* <div className={`${style.cardImage}`}>
+            <div className={`${style.cardImage}`}>
               <Image src={card.image.src} alt={card.image.alt} />
-            </div> */}
+            </div>
             <p className={`${compareToSelectedCard(card.name) ? 'text' : 'mobileText'}`}>{ card.name }</p>
           </div>
         ))
@@ -72,18 +72,18 @@ const zipperStructure = ({elementRef, startAnimation}: zipperStructureProps) => 
       name: '메탈',
       image: metalZipperImage
     },
-    {
-      name: 'metal',
-      image: plasticZipperImage
-    },
-    {
-      name: 'Sample3',
-      image: plasticZipperImage
-    },
-    {
-      name: 'Sample4',
-      image: plasticZipperImage
-    }
+    // {
+    //   name: 'metal',
+    //   image: plasticZipperImage
+    // },
+    // {
+    //   name: 'Sample3',
+    //   image: plasticZipperImage
+    // },
+    // {
+    //   name: 'Sample4',
+    //   image: plasticZipperImage
+    // }
   ]
 
   const plasticArray: Array<cardAttribute> = [
