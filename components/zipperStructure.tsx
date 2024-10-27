@@ -72,18 +72,18 @@ const zipperStructure = ({elementRef, startAnimation}: zipperStructureProps) => 
       name: '메탈',
       image: metalZipperImage
     },
-    // {
-    //   name: 'metal',
-    //   image: plasticZipperImage
-    // },
-    // {
-    //   name: 'Sample3',
-    //   image: plasticZipperImage
-    // },
-    // {
-    //   name: 'Sample4',
-    //   image: plasticZipperImage
-    // }
+    {
+      name: 'metal',
+      image: plasticZipperImage
+    },
+    {
+      name: 'Sample3',
+      image: plasticZipperImage
+    },
+    {
+      name: 'Sample4',
+      image: plasticZipperImage
+    }
   ]
 
   const plasticArray: Array<cardAttribute> = [
