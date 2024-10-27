@@ -36,9 +36,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* max-width: 3; */
-  /* height: 26px; */
-  aspect-ratio: auto 1 / 0.01;
+  /* height: 16px; */
+  width: 100px;
+  aspect-ratio: 1 / 0.01;
   padding: 5px;
   transition: all 750ms;
 }
@@ -72,7 +72,6 @@
 }
 
 .selected {
-  aspect-ratio: auto 1 / 1;
   align-items: flex-end;
   padding: 25px;
 }
