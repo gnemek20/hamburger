@@ -1,12 +1,17 @@
 import style from '@/styles/components/request/request.module.css'
 import animation from '@/styles/components/request/animation.module.css'
-import { AdditionalText, Dialog, Offset, Section } from '.'
+import { AdditionalText, Banner, Dialog, Offset, Section } from '.'
 import { ChangeEvent, RefObject, useEffect, useState } from 'react'
 import { File } from 'buffer'
 import Image from 'next/image'
 
 interface requestProps {
   elementRef: RefObject<HTMLDivElement>
+}
+
+const bannerImage = {
+  src: require('@/public/images/blueprint.jpg'),
+  alt: 'banner'
 }
 
 const request = (props: requestProps) => {
@@ -194,15 +199,10 @@ const request = (props: requestProps) => {
 
   return (
     <>
-      {/* <Offset size={100} /> */}
-      <Section className={`flex justifyCenter`} gray>
-        <div className={`flex flexColumn alignCenter limitWidth maxWidth`} ref={props.elementRef}>
-          <div className={`flex flexColumn textCenter ${style.content}`}>
-            <h1 className={`title`}>발주 문의</h1>
-            <div>
-              <p className={`text`}>최대한 빨리 확인하여 기재해주신 연락처로 연락드리겠습니다.</p>
-            </div>
-          </div>
+      <Offset size={75} />
+      <Banner elementRef={props.elementRef} image={bannerImage} title="발주 문의" subTitle="최대한 빨리 확인하여 기재해주신 연락처로 연락드리겠습니다." />
+      <div className={`flex justifyCenter`}>
+        <div className={`flex flexColumn alignCenter limitWidth maxWidth`}>
           <div className={`flex flexColumn maxWidth alignCenter ${style.methodContainer}`}>
             <div className={`flex spaceBetween maxWidth textCenter ${style.methods}`}>
               <div className={`flex flexColumn alignCenter maxWidth`}>
@@ -324,10 +324,6 @@ const request = (props: requestProps) => {
             )
           }
         </div>
-      </Section>
-      <div className={`${style.finalText}`}>
-        <p className={`mobileText`}>패션에 새로운 날개를 달다</p>
-        <p className={`mobileText`}>주식회사 대양아이엔지 ⓒ</p>
       </div>
     </>
   )

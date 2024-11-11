@@ -18,6 +18,11 @@
   flex: 1;
 }
 
+.finalText {
+  display: flex;
+  gap: 20px;
+}
+
 @media screen and (max-width: 767px) {
   .textContainer:nth-last-child(1) {
     text-align: flex-start;

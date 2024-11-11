@@ -21,17 +21,17 @@ const main = () => {
     Detail,
     ZipperStructure,
     Merit,
-    Map,
-    Request
+    Request,
+    Map
   ];
+
   const refs: Array<RefObject<HTMLDivElement>> = [
     introduceRef,
     detailRef,
     zipperStructureRef,
     meritRef,
-    // talkRef,
-    mapRef,
-    requestRef
+    requestRef,
+    mapRef
   ];
 
   const elementObserved = (observer: IntersectionObserver, elementRef: RefObject<HTMLDivElement>) => {
@@ -67,7 +67,7 @@ const main = () => {
   return (
     <>
       <Landing />
-      <Header requestComponentRef={refs[refs.length - 1]} />
+      <Header requestComponentRef={refs[refs.length - 2]} />
       {
         components.map((Component, index) => (
           <Component elementRef={refs[index]} startAnimation={intersectingElements.includes(refs[index])} key={index} />

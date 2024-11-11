@@ -107,7 +107,7 @@ const landing = () => {
         <Image className={`title opacityNone ${style.resultTitle} ${animationCounter >= 4 && animation.resultTitleSlideIn}`} src={logo.src} alt={logo.alt} />
       </div>
 
-      <EmphasizeScroll className={`opacityNone ${animationCounter >= 5 && animation.emphasizeScrollFadeIn}`} />
+      <EmphasizeScroll className={`opacityNone ${animationCounter >= 4 && animation.emphasizeScrollFadeIn}`} />
     </div>
   )
 }
