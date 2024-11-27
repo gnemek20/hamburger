@@ -18,7 +18,7 @@ const main = () => {
 
   const components: Array<(props: componentsProps) => JSX.Element> = [
     Introduce,
-    Detail,
+    // Detail,
     ZipperStructure,
     Merit,
     Request,
@@ -27,7 +27,7 @@ const main = () => {
 
   const refs: Array<RefObject<HTMLDivElement>> = [
     introduceRef,
-    detailRef,
+    // detailRef,
     zipperStructureRef,
     meritRef,
     requestRef,
