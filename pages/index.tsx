@@ -27,6 +27,12 @@ const main = () => {
     mapRef
   ];
 
+  const componentNames: Array<string> = [
+    '회사 소개',
+    '발주 문의',
+    '찾아오는 길'
+  ]
+
   const elementObserved = (observer: IntersectionObserver, elementRef: RefObject<HTMLDivElement>) => {
     if (!intersectingElements.includes(elementRef)) appendIntointersectingElements(elementRef);
     else elementRef.current && observer.unobserve(elementRef.current);
@@ -59,7 +65,7 @@ const main = () => {
 
   return (
     <>
-      <TopButton />
+      <TopButton componentNames={componentNames} />
       <Landing />
       <Header requestComponentRef={refs[refs.length - 2]} />
       {
