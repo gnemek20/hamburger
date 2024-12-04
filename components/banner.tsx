@@ -19,8 +19,10 @@ const banner = ({elementRef, image, title, subTitle}: bannerAttributes) => {
   return (
     <div ref={elementRef} className={`${style.banner}`}>
       <Image className={`${style.image}`} src={image.src} alt={image.alt} />
-      <h1 className={`title colorWhite`}>{ title }</h1>
-      <p className={`mobileText textCenter colorWhite`}>{ subTitle }</p>
+      <div className={`${style.text}`}>
+        <h1 className={`title textCenter colorWhite`}>{ title }</h1>
+        <p className={`mobileText textCenter colorWhite`}>{ subTitle }</p>
+      </div>
     </div>
   )
 }

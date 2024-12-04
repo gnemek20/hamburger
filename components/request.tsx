@@ -1,6 +1,6 @@
 import style from '@/styles/components/request/request.module.css'
 import animation from '@/styles/components/request/animation.module.css'
-import { AdditionalText, Banner, Dialog, Offset, Section } from '.'
+import { AdditionalText, Banner, Dialog, Offset } from '.'
 import { ChangeEvent, RefObject, useEffect, useState } from 'react'
 import { File } from 'buffer'
 import Image from 'next/image'

@@ -1,26 +1,33 @@
 import style from '@/styles/components/introduce/introduce.module.css'
 import animation from '@/styles/components/introduce/animation.module.css'
-import { Background, ImageFrame, Section } from '.'
-import { RefObject, useEffect } from 'react'
-import Image, { StaticImageData } from 'next/image'
+import { RefObject } from 'react'
+import Image from 'next/image'
 
 interface introduceProps {
   elementRef: RefObject<HTMLDivElement>
   startAnimation: boolean
 }
 
-const backgroundImage = require('@/public/textures/suit.jpg');
-
 const introduce = (props: introduceProps) => {
+  const backgroundImage = {
+    src: require('@/public/images/suit.jpg'),
+    alt: 'backgroundImage'
+  }
+
   const thumbnailImage = {
     src: require('@/public/logo.svg'),
     alt: 'thumbnailImage'
   }
   
   return (
-    <Section className={`flex justifyCenter`} padding='150px 20px 200px'>
-      <Background image={backgroundImage} gradation />
-      {/* <Background image={backgroundImage} /> */}
+    <div className={`${style.section}`}>
+      <div className={`${style.background}`}>
+        <Image src={backgroundImage.src} alt={backgroundImage.alt} />
+        <div className={`${style.gradation}`}>
+          <div />
+          <div />
+        </div>
+      </div>
       <div ref={props.elementRef} className={`flex limitWidth maxWidth alignCenter mobileAlignStart mobileFlexColumn`}>
         <div className={`flex flexColumn ${style.content}`}>
           <h1 className={`title opacityNone colorWhite ${props.startAnimation && animation.titleSlideIn}`}>대양 아이엔지란?</h1>
@@ -40,10 +47,9 @@ const introduce = (props: introduceProps) => {
             <p className={`additionalText colorWhite`}>주식회사 대양아이엔지 ⓒ</p>
           </div>
         </div>
-        {/* <ImageFrame className={`opacityNone ${style.thumbnail} ${props.startAnimation && animation.thumbnailSlideIn}`} image={thumbnailImage} /> */}
         <Image className={`opacityNone ${style.thumbnail} ${props.startAnimation && animation.thumbnailSlideIn}`} src={thumbnailImage.src} alt={thumbnailImage.alt} />
       </div>
-    </Section>
+    </div>
   )
 }
 

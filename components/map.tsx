@@ -1,6 +1,6 @@
 import style from '@/styles/components/map/map.module.css'
 import animation from '@/styles/components/map/animation.module.css'
-import { Banner, Offset, Section } from '.'
+import { Banner, Offset } from '.'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 

@@ -1,13 +1,10 @@
-import style from "@/styles/main.module.css"
-import { Detail, Footer, Header, Introduce, Landing, Map, Merit, Request, Talk, ZipperStructure } from '@/components/index';
+import { Footer, Header, Introduce, Landing, Map, Request, TopButton, ZipperStructure } from '@/components/index';
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const main = () => {
   const [intersectingElements, setintersectingElements] = useState<Array<RefObject<HTMLDivElement>>>([]);
   const introduceRef = useRef<HTMLDivElement>(null);
-  const zipperStructureRef = useRef<HTMLDivElement>(null);
-  const detailRef = useRef<HTMLDivElement>(null);
-  const meritRef = useRef<HTMLDivElement>(null);
+  // const zipperStructureRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<HTMLDivElement>(null);
 
@@ -17,19 +14,15 @@ const main = () => {
   }
 
   const components: Array<(props: componentsProps) => JSX.Element> = [
-    Introduce,
-    // Detail,
-    ZipperStructure,
-    Merit,
+    Introduce, 
+    // ZipperStructure,
     Request,
     Map
   ];
 
   const refs: Array<RefObject<HTMLDivElement>> = [
     introduceRef,
-    // detailRef,
-    zipperStructureRef,
-    meritRef,
+    // zipperStructureRef,
     requestRef,
     mapRef
   ];
@@ -66,6 +59,7 @@ const main = () => {
 
   return (
     <>
+      <TopButton />
       <Landing />
       <Header requestComponentRef={refs[refs.length - 2]} />
       {
