@@ -27,8 +27,14 @@
   border-right: none;
 }
 
-.contact {
+.methodForm {
+  display: flex;
+  width: calc(100% - 20px);
   max-width: 600px;
+  padding: 10px;
+}
+
+.contact {
   gap: 30px;
 }
 .contactMethod {
@@ -57,7 +63,6 @@
 }
 
 .form {
-  max-width: 600px;
   gap: 30px;
 }
 .form > div {

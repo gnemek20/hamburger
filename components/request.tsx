@@ -216,10 +216,7 @@ const request = (props: requestProps) => {
           </div>
           {
             selectedMethod === 'realTime' && (
-              <div className={`flex flexColumn maxWidth ${style.contact}`}>
-                <div>
-                  <p className={`mobileText textCenter`}>아이콘을 클릭해주세요.</p>
-                </div>
+              <div className={`flex flexColumn ${style.methodForm} ${style.contact}`}>
                 <div className={`flex alignCenter ${style.contactMethod}`}>
                   <div className={`${style.contactImageContainer}`}>
                     <Image className={`${style.contactImage}`} src={kakaoImage.src} alt={kakaoImage.alt} />
@@ -243,7 +240,7 @@ const request = (props: requestProps) => {
           }
           {
             selectedMethod === 'email' && (
-              <div className={`flex flexColumn maxWidth ${style.form}`}>
+              <div className={`flex flexColumn ${style.methodForm} ${style.form}`}>
                 <div>
                   <AdditionalText require>이름</AdditionalText>
                   <input className={`${style.formTextInput}`} type="text" spellCheck={false} onChange={(event) => setTimeout(() => inputText('name', event.target.value))} placeholder={placeholderName} />
