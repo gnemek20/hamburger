@@ -1,5 +1,4 @@
 import style from '@/styles/components/footer/footer.module.css'
-import { Offset } from '.'
 
 const footer = () => {
   return (
@@ -19,7 +18,6 @@ const footer = () => {
             <p className={`mobileText colorWhite`}>이메일: kyounghwa_kim@daeyanging.com</p>
           </div>
         </div>
-        <Offset size={0} />
         <div className={`${style.textContainer} ${style.finalText}`}>
           <p className={`mobileText colorWhite`}>패션에 새로운 날개를 달다</p>
           <p className={`mobileText colorWhite`}>주식회사 대양아이엔지 ⓒ</p>

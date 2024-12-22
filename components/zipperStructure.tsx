@@ -1,16 +1,13 @@
 import style from '@/styles/components/zipperStructure/zipperStructure.module.css'
-import { Banner, Offset } from '.'
 import { RefObject, useEffect, useState } from 'react'
 import Image from 'next/image'
 
-const bannerImage = {
-  src: require('@/public/images/gear.jpg'),
-  alt: 'bannerImage'
-}
-
 interface cardAttribute {
   name: string
-  image: typeof bannerImage
+  image: {
+    src: any
+    alt: string
+  }
 }
 
 interface stackAttribute {
@@ -126,9 +123,6 @@ const zipperStructure = ({elementRef, startAnimation}: zipperStructureProps) => 
 
   return (
     <>
-      <Offset size={75} />
-      <Banner image={bannerImage} title='지퍼의 다양성' subTitle='variety of zipper' />
-      <Offset size={45} />
       <div ref={elementRef} className={`${style.zipperStructure}`}>
         <div className={`limitWidth ${style.list}`}>
           <div>

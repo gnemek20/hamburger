@@ -1,0 +1,10 @@
+.pageTitle {
+  margin: 100px 0px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .pageTitle {
+    margin: 75px 0px;
+  }
+}

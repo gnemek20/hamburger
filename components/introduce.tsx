@@ -1,37 +1,45 @@
-import style from '@/styles/components/introduce/introduce.module.css'
-import animation from '@/styles/components/introduce/animation.module.css'
-import { RefObject } from 'react'
+import styles from '@/styles/components/introduce/introduce.module.css'
+import animations from '@/styles/components/introduce/animation.module.css'
+import { RefObject, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import { observeElement } from '@/functions/observeElement'
 
-interface introduceProps {
+interface componentProps {
   elementRef: RefObject<HTMLDivElement>
-  startAnimation: boolean
 }
 
-const introduce = (props: introduceProps) => {
-  const backgroundImage = {
-    src: require('@/public/images/suit.jpg'),
-    alt: 'backgroundImage'
-  }
+const backgroundImage = {
+  src: require('@/public/images/suit.jpg'),
+  alt: 'backgroundImage'
+}
 
-  const thumbnailImage = {
-    src: require('@/public/logo.svg'),
-    alt: 'thumbnailImage'
-  }
+const thumbnailImage = {
+  src: require('@/public/logo.svg'),
+  alt: 'thumbnailImage'
+}
+
+const introduce = (props: componentProps) => {
+  const animationTriggerElement = useRef<HTMLDivElement>(null);
+
+  const [animationTrigger, setAnimationTrigger] = useState<boolean>(false);
+
+  useEffect(() => {
+    observeElement(animationTriggerElement, () => setAnimationTrigger(true));
+  }, [])
   
   return (
-    <div className={`${style.section}`}>
-      <div className={`${style.background}`}>
+    <div ref={props.elementRef} className={`${styles.section}`}>
+      <div className={`${styles.background}`}>
         <Image src={backgroundImage.src} alt={backgroundImage.alt} />
-        <div className={`${style.gradation}`}>
+        <div className={`${styles.gradation}`}>
           <div />
           <div />
         </div>
       </div>
-      <div ref={props.elementRef} className={`flex limitWidth maxWidth alignCenter mobileAlignStart mobileFlexColumn`}>
-        <div className={`flex flexColumn ${style.content}`}>
-          <h1 className={`title opacityNone colorWhite ${props.startAnimation && animation.titleSlideIn}`}>대양 아이엔지란?</h1>
-          <div className={`opacityNone ${props.startAnimation && animation.textSlideIn}`}>
+      <div ref={animationTriggerElement} className={`${styles.introduceContainer}`}>
+        <div className={`${styles.introduceContent}`}>
+          <h1 className={`title opacityNone colorWhite ${animationTrigger && animations.titleSlideIn}`}>대양 아이엔지란?</h1>
+          <div className={`opacityNone ${animationTrigger && animations.textSlideIn}`}>
             <p className={`text colorWhite`}>국내 최고의 패션 리더 그룹사들의 파트너로서</p>
             <p className={`text colorWhite`}>20여 년간 끊임없는 신뢰와 열정으로 함께 걸어가고 있습니다.</p>
             <br />
@@ -47,7 +55,9 @@ const introduce = (props: introduceProps) => {
             <p className={`additionalText colorWhite`}>주식회사 대양아이엔지 ⓒ</p>
           </div>
         </div>
-        <Image className={`opacityNone ${style.thumbnail} ${props.startAnimation && animation.thumbnailSlideIn}`} src={thumbnailImage.src} alt={thumbnailImage.alt} />
+        <div className={`${styles.introduceThumbnail} ${animationTrigger && animations.thumbnailSlideIn}`}>
+          <Image src={thumbnailImage.src} alt={thumbnailImage.alt} />
+        </div>
       </div>
     </div>
   )

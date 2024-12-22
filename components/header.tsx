@@ -1,40 +1,66 @@
-import style from '@/styles/components/header/header.module.css'
-import animation from '@/styles/components/header/animation.module.css'
-import { RefObject, useEffect, useRef } from 'react';
+import { routerPush } from '@/public/functions/default';
+import styles from '@/styles/components/header/header.module.css'
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
-interface headerProps {
-  requestComponentRef: RefObject<HTMLDivElement>
+const hamburgerIcon = {
+  src: require('@/public/icons/hamburger.svg'),
+  alt: 'hamburger'
 }
 
-const header = (props: headerProps) => {
+const header = () => {
   const router = useRouter();
-  const headerRef = useRef<HTMLDivElement>(null);
 
-  const moveToRequestComponent = () => {
-    const requestComponent = props.requestComponentRef.current;
-    const headerOffset = 100;
-    const componentPosition = requestComponent ? requestComponent.getBoundingClientRect().top : 0;
-    const offsetPosition = componentPosition + window.scrollY - headerOffset;
+  const [toggledCategory, setToggledCategory] = useState<boolean>(false);
 
-    window.scrollTo({
-      behavior: 'smooth',
-      top: offsetPosition
-    });
-  }
-
-  const pageReload = () => {
-    router.reload();
+  const toggleCategory = () => {
+    setToggledCategory(!toggledCategory);
   }
 
   return (
-    <div ref={headerRef} className={`flex justifyCenter ${style.header}`}>
-      <div className={`limitWidth maxWidth flex spaceBetween`}>
-        <div className={`${style.title}`}>
-          <p className={`text colorWhite`} onClick={() => pageReload()}>대양 ING</p>
-        </div>
-        <div className={`${style.categories}`}>
-          <p className={`text colorWhite`} onClick={() => moveToRequestComponent()}>발주하러 가기</p>
+    <div className={`${styles.headerContainer}`}>
+      <div className={`${styles.toggleButton}`} onClick={() => toggleCategory()}>
+        <Image src={hamburgerIcon.src} alt={hamburgerIcon.alt} />
+      </div>
+      {
+        toggledCategory && <div className={`${styles.headerBackground}`} onClick={() => toggleCategory()} />
+      }
+      <div className={`${styles.categoryContainer} ${toggledCategory && styles.toggledCategoryContainer}`}>
+        <div className={`${styles.categoryList}`}>
+          <div className={`${styles.category}`}>
+            <div className={`${styles.categoryClass}`}>
+              <h1>LANDING</h1>
+            </div>
+            <div className={`${styles.categoryContent}`}>
+              <div onClick={() => routerPush(router, '/')}>
+                <p>메인 페이지</p>
+              </div>
+            </div>
+          </div>
+          <div className={`${styles.category}`}>
+            <div className={`${styles.categoryClass}`}>
+              <h1>INTRODUCE</h1>
+            </div>
+            <div className={`${styles.categoryContent}`}>
+              <div onClick={() => routerPush(router, '/introduce')}>
+                <p>대양ING 제품</p>
+              </div>
+            </div>
+          </div>
+          <div className={`${styles.category}`}>
+            <div className={`${styles.categoryClass}`}>
+              <h1>CONTACT</h1>
+            </div>
+            <div className={`${styles.categoryContent}`}>
+              <div onClick={() => routerPush(router, '/request')}>
+                <p>제품 발주 문의</p>
+              </div>
+              <div onClick={() => routerPush(router, 'map')}>
+                <p>오시는 길</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -7,9 +7,22 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  user-select: none;
+  pointer-events: none;
+}
+
 a {
+  font-family: var(--font);
   color: #333;
   text-decoration: none;
+}
+
+h1 {
+  font-family: var(--font);
+}
+p {
+  font-family: var(--font);
 }
 
 .flicking-viewport {
@@ -213,6 +226,8 @@ a {
 
   --pc-normal-size: 18px;
   --mobile-normal-size: 14px;
+
+  --max-width-size: 1200px;
 
   --font: '폰트';
 }

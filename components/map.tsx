@@ -1,13 +1,7 @@
 import style from '@/styles/components/map/map.module.css'
 import animation from '@/styles/components/map/animation.module.css'
-import { Banner, Offset } from '.'
-import { useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-
-const bannerImage = {
-  src: require('@/public/images/explore.jpg'),
-  alt: 'bannerImage'
-}
 
 const copyIcon = {
   src: require('@/public/icons/copy.svg'),
@@ -19,7 +13,11 @@ const checkIcon = {
   alt: 'checkIcon'
 }
 
-const map = () => {
+interface pageProps {
+  elementRef: RefObject<HTMLDivElement>
+}
+
+const map = (props: pageProps) => {
   const map = useRef<Element | any>(null);
   const mapCoverRef = useRef<HTMLDivElement>(null);
 
@@ -49,7 +47,7 @@ const map = () => {
 
       setTimeout(() => {
         setIsCopied(false);
-      }, 3000);
+      }, 1000);
     }
     catch (err) {
       alert('복사에 실패했습니다.');
@@ -89,15 +87,11 @@ const map = () => {
 
   return (
     <>
-      <Offset size={100} />
-      <Banner image={bannerImage} title='찾아오는 길' subTitle='Way to Come' />
-      {/* <Offset size={45} /> */}
-      <div className={`flex justifyCenter ${style.mapBackground}`}>
+      <div ref={props.elementRef} className={`flex justifyCenter ${style.mapBackground}`}>
         <div className={`${style.gradation}`}>
           <div />
           <div />
         </div>
-        {/* <div className={`relative flex limitWidth maxWidth`}> */}
         <div className={`relative flex maxWidth`}>
           <div
             className={`
